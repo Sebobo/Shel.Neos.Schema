@@ -1,12 +1,48 @@
-$schema: "http://json-schema.org/draft-04/schema"
-id: "neos.nodetypes.schema"
+$schema: "http://json-schema.org/draft-07/schema"
 title: Neos NodeTypes Schema
 type: object
+
+# Only allow one nodetype per file
+minProperties: 1
+maxProperties: 1
+
+definitions:
+  position:
+    id: '#position'
+    oneOf:
+      - type: string
+      - type: number
+        minimum: 0
+  help:
+    id: '#help'
+    type: object
+    additionalProperties: false
+    properties:
+      message:
+        type: string
+
+# Require a supertype except for the 'unstructured' type in the CR package
+#if:
+#  additionalProperties:
+#    properties:
+#      abstract:
+#        enum: [ false, null ]
+#  properties:
+#    unstructured:
+#      type: string
+#then:
+#  additionalProperties:
+#    required:
+#      - superTypes
+
 additionalProperties:
   type: object
   additionalProperties: false
   properties:
     abstract:
+      type: boolean
+
+    final:
       type: boolean
 
     aggregate:
@@ -29,67 +65,184 @@ additionalProperties:
       additionalProperties:
         type: boolean
 
-    properties:
+    search:
       type: object
+      properties:
+        fulltext:
+          type: object
+          properties:
+            enable:
+              type: boolean
+
+    childNodes:
+      type: ['object', 'null']
+      propertyNames:
+        pattern: '^[a-z0-9\-]+$'
+      additionalProperties:
+        type: ['object', 'null']
+        additionalProperties: false
+        properties:
+          position:
+            $ref: '#position'
+
+          type:
+            type: string
+
+          constraints:
+            type: object
+            additionalProperties: false
+            required: ['nodeTypes']
+            properties:
+              nodeTypes:
+                type: object
+                additionalProperties:
+                  type: boolean
+
+    properties:
+      type: ['object', 'null']
       additionalProperties:
         type: object
         additionalProperties: false
         properties:
           type:
             type: string
+          defaultValue:
+            type: ['string', 'number', 'boolean', 'null']
+          search:
+            type: object
+            properties:
+              fulltextExtractor:
+                type: string
           ui:
             type: object
             additionalProperties: false
             properties:
               label:
-                type: string
+                type: ['string', 'null']
+
+              help:
+                $ref: '#help'
+
+              reloadIfChanged:
+                type: boolean
+
               reloadPageIfChanged:
                 type: boolean
-              showInCreationDialog:
+
+              inlineEditable:
                 type: boolean
+
+              inline:
+                type: ['null', 'object']
+
+              showInCreationDialog:
+                type: ['boolean', 'null']
+
               inspector:
-                type: object
+                type: ['object', 'null']
                 additionalProperties: false
                 properties:
+                  hidden:
+                    type: ['boolean', 'null', 'string']
+
                   group:
-                    type: string
-                  editorOptions:
-                    type: object
+                    type: ['string', 'null']
+
                   position:
-                    oneOf:
-                      - type: number
-                      - type: string
+                    $ref: '#position'
+
+                  editor:
+                    type: [ 'string', 'null' ]
+
+                  editorOptions:
+                    type: ['object', 'null']
+                    properties:
+                      nodeTypes:
+                        type: array
+                        uniqueItems: true
+                        items:
+                          type: string
+
+                  editorListeners:
+                    type: ['object', 'null']
+                    additionalProperties:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        property:
+                          type: string
+
+                        handler:
+                          type: string
+
+                        handlerOptions:
+                          type: object
           validation:
             type: object
             additionalProperties:
-              anyOf:
-                - type: object
-                - type: array
+              type: ['object', 'array']
 
     ui:
       type: object
       additionalProperties: false
       properties:
+        # TODO: Combine label & icon into reusable definition
         label:
           type: string
+
         icon:
           type: string
+
         group:
           type: string
+
         inlineEditable:
           type: boolean
+
+        position:
+          $ref: '#position'
+
         help:
-          type: object
-          additionalProperties: false
-          properties:
-            message:
-              type: string
+          $ref: '#help'
+
         search:
           type: object
           additionalProperties: false
           properties:
             searchCategory:
               type: string
+
+        creationDialog:
+          type: object
+          additionalProperties: false
+          properties:
+            elements:
+              type: ['object', 'null']
+              additionalProperties:
+                type: object
+                additionalProperties: false
+                properties:
+                  type:
+                    type: string
+
+                  ui:
+                    type: object
+                    additionalProperties: false
+                    properties:
+                      label:
+                        type: string
+
+                      editor:
+                        type: string
+
+                      editorOptions:
+                        type: object
+
+                  validation:
+                    type: ['object', 'null']
+                    additionalProperties:
+                      type: ['array', 'object']
+
         inspector:
           type: object
           additionalProperties: false
@@ -103,11 +256,10 @@ additionalProperties:
                   label:
                     type: string
                   position:
-                    oneOf:
-                      - type: string
-                      - type: number
+                    $ref: '#position'
                   icon:
                     type: string
+
             groups:
               type: object
               additionalProperties:
@@ -117,13 +269,14 @@ additionalProperties:
                   label:
                     type: string
                   position:
-                    oneOf:
-                      - type: string
-                      - type: number
+                    $ref: '#position'
                   tab:
                     type: string
                   icon:
                     type: string
+                  collapsed:
+                    type: boolean
+
             views:
               type: object
               additionalProperties:
@@ -133,9 +286,7 @@ additionalProperties:
                   label:
                     type: string
                   position:
-                    oneOf:
-                      - type: string
-                      - type: number
+                    $ref: '#position'
                   group:
                     type: string
                   view:
@@ -161,11 +312,11 @@ additionalProperties:
             type: object
             additionalProperties:
               type: string
+
         fusion:
           type: object
           additionalProperties: true
           properties:
             prototypeGenerator:
-              oneOf:
-                - type: null
-                - type: string
+              # TODO: Define classname pattern
+              type: ['null', 'string']
