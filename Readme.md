@@ -11,7 +11,7 @@ When the schema is stable enough it will hopefully be made available in the [sch
 
 Follow the [official instruction](https://www.jetbrains.com/help/phpstorm/json.html#ws_json_schema_add_custom) and add the url: 
 
-    https://github.com/Sebobo/Shel.Neos.Schema/blob/main/Resources/Private/Schema/NodeTypes.Schema.yaml
+    https://github.com/Sebobo/Shel.Neos.Schema/blob/main/NodeTypes.Schema.yaml
 
 Set `Schema Version` to `JSON Schema version 7`.
 
