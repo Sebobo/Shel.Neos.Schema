@@ -1,0 +1,11 @@
+{
+    "name": "shel/neos-schema",
+    "license": "GPL-3.0-or-later",
+    "type": "neos-plugin",
+    "description": "JSON schema for Neos CMS",
+    "extra": {
+        "neos": {
+            "package-key": "Shel.Neos.Schema"
+        }
+    }
+}

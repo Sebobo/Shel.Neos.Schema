@@ -1,0 +1,171 @@
+$schema: "http://json-schema.org/draft-04/schema"
+id: "neos.nodetypes.schema"
+title: Neos NodeTypes Schema
+type: object
+additionalProperties:
+  type: object
+  additionalProperties: false
+  properties:
+    abstract:
+      type: boolean
+
+    aggregate:
+      type: boolean
+
+    label:
+      type: string
+
+    constraints:
+      type: object
+      additionalProperties: false
+      properties:
+        nodeTypes:
+          type: object
+          additionalProperties:
+            type: boolean
+
+    superTypes:
+      type: object
+      additionalProperties:
+        type: boolean
+
+    properties:
+      type: object
+      additionalProperties:
+        type: object
+        additionalProperties: false
+        properties:
+          type:
+            type: string
+          ui:
+            type: object
+            additionalProperties: false
+            properties:
+              label:
+                type: string
+              reloadPageIfChanged:
+                type: boolean
+              showInCreationDialog:
+                type: boolean
+              inspector:
+                type: object
+                additionalProperties: false
+                properties:
+                  group:
+                    type: string
+                  editorOptions:
+                    type: object
+                  position:
+                    oneOf:
+                      - type: number
+                      - type: string
+          validation:
+            type: object
+            additionalProperties:
+              anyOf:
+                - type: object
+                - type: array
+
+    ui:
+      type: object
+      additionalProperties: false
+      properties:
+        label:
+          type: string
+        icon:
+          type: string
+        group:
+          type: string
+        inlineEditable:
+          type: boolean
+        help:
+          type: object
+          additionalProperties: false
+          properties:
+            message:
+              type: string
+        search:
+          type: object
+          additionalProperties: false
+          properties:
+            searchCategory:
+              type: string
+        inspector:
+          type: object
+          additionalProperties: false
+          properties:
+            tabs:
+              type: object
+              additionalProperties:
+                type: object
+                additionalProperties: false
+                properties:
+                  label:
+                    type: string
+                  position:
+                    oneOf:
+                      - type: string
+                      - type: number
+                  icon:
+                    type: string
+            groups:
+              type: object
+              additionalProperties:
+                type: object
+                additionalProperties: false
+                properties:
+                  label:
+                    type: string
+                  position:
+                    oneOf:
+                      - type: string
+                      - type: number
+                  tab:
+                    type: string
+                  icon:
+                    type: string
+            views:
+              type: object
+              additionalProperties:
+                type: object
+                additionalProperties: false
+                properties:
+                  label:
+                    type: string
+                  position:
+                    oneOf:
+                      - type: string
+                      - type: number
+                  group:
+                    type: string
+                  view:
+                    type: string
+                  viewOptions:
+                    type: object
+
+    postprocessors:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          postprocessor:
+            type: string
+
+    options:
+      type: object
+      additionalProperties: false
+      properties:
+        nodeCreationHandlers:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+        fusion:
+          type: object
+          additionalProperties: true
+          properties:
+            prototypeGenerator:
+              oneOf:
+                - type: null
+                - type: string
