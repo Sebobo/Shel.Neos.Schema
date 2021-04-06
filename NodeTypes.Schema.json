@@ -1,0 +1,451 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Neos NodeTypes Schema",
+    "type": "object",
+    "minProperties": 1,
+    "maxProperties": 1,
+    "definitions": {
+        "position": {
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "number",
+                    "minimum": 0
+                }
+            ]
+        },
+        "help": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+            "abstract": {
+                "type": "boolean"
+            },
+            "final": {
+                "type": "boolean"
+            },
+            "aggregate": {
+                "type": "boolean"
+            },
+            "label": {
+                "type": "string"
+            },
+            "constraints": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "nodeTypes": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            },
+            "superTypes": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "boolean"
+                }
+            },
+            "search": {
+                "type": "object",
+                "properties": {
+                    "fulltext": {
+                        "type": "object",
+                        "properties": {
+                            "enable": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                }
+            },
+            "childNodes": {
+                "type": [
+                    "object",
+                    "null"
+                ],
+                "propertyNames": {
+                    "pattern": "^[a-z0-9\\-]+$"
+                },
+                "additionalProperties": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "position": {
+                            "$ref": "#/definitions/position"
+                        },
+                        "type": {
+                            "type": "string"
+                        },
+                        "constraints": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                                "nodeTypes"
+                            ],
+                            "properties": {
+                                "nodeTypes": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "properties": {
+                "type": [
+                    "object",
+                    "null"
+                ],
+                "additionalProperties": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "type": "string"
+                        },
+                        "defaultValue": {
+                            "type": [
+                                "string",
+                                "number",
+                                "boolean",
+                                "null"
+                            ]
+                        },
+                        "search": {
+                            "type": "object",
+                            "properties": {
+                                "fulltextExtractor": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "ui": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "label": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "help": {
+                                    "$ref": "#/definitions/help"
+                                },
+                                "reloadIfChanged": {
+                                    "type": "boolean"
+                                },
+                                "reloadPageIfChanged": {
+                                    "type": "boolean"
+                                },
+                                "inlineEditable": {
+                                    "type": "boolean"
+                                },
+                                "inline": {
+                                    "type": [
+                                        "null",
+                                        "object"
+                                    ]
+                                },
+                                "showInCreationDialog": {
+                                    "type": [
+                                        "boolean",
+                                        "null"
+                                    ]
+                                },
+                                "inspector": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "hidden": {
+                                            "type": [
+                                                "boolean",
+                                                "null",
+                                                "string"
+                                            ]
+                                        },
+                                        "group": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "position": {
+                                            "$ref": "#/definitions/position"
+                                        },
+                                        "editor": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "editorOptions": {
+                                            "type": [
+                                                "object",
+                                                "null"
+                                            ],
+                                            "properties": {
+                                                "nodeTypes": {
+                                                    "type": "array",
+                                                    "uniqueItems": true,
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "editorListeners": {
+                                            "type": [
+                                                "object",
+                                                "null"
+                                            ],
+                                            "additionalProperties": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "property": {
+                                                        "type": "string"
+                                                    },
+                                                    "handler": {
+                                                        "type": "string"
+                                                    },
+                                                    "handlerOptions": {
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "validation": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": [
+                                    "object",
+                                    "array"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "ui": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "label": {
+                        "type": "string"
+                    },
+                    "icon": {
+                        "type": "string"
+                    },
+                    "group": {
+                        "type": "string"
+                    },
+                    "inlineEditable": {
+                        "type": "boolean"
+                    },
+                    "position": {
+                        "$ref": "#/definitions/position"
+                    },
+                    "help": {
+                        "$ref": "#/definitions/help"
+                    },
+                    "search": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "searchCategory": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "creationDialog": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "elements": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "additionalProperties": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "ui": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "label": {
+                                                    "type": "string"
+                                                },
+                                                "editor": {
+                                                    "type": "string"
+                                                },
+                                                "editorOptions": {
+                                                    "type": "object"
+                                                }
+                                            }
+                                        },
+                                        "validation": {
+                                            "type": [
+                                                "object",
+                                                "null"
+                                            ],
+                                            "additionalProperties": {
+                                                "type": [
+                                                    "array",
+                                                    "object"
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "inspector": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "tabs": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "label": {
+                                            "type": "string"
+                                        },
+                                        "position": {
+                                            "$ref": "#/definitions/position"
+                                        },
+                                        "icon": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "groups": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "label": {
+                                            "type": "string"
+                                        },
+                                        "position": {
+                                            "$ref": "#/definitions/position"
+                                        },
+                                        "tab": {
+                                            "type": "string"
+                                        },
+                                        "icon": {
+                                            "type": "string"
+                                        },
+                                        "collapsed": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            },
+                            "views": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "label": {
+                                            "type": "string"
+                                        },
+                                        "position": {
+                                            "$ref": "#/definitions/position"
+                                        },
+                                        "group": {
+                                            "type": "string"
+                                        },
+                                        "view": {
+                                            "type": "string"
+                                        },
+                                        "viewOptions": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "postprocessors": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                        "postprocessor": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "options": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "nodeCreationHandlers": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "fusion": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "properties": {
+                            "prototypeGenerator": {
+                                "type": [
+                                    "null",
+                                    "string"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
