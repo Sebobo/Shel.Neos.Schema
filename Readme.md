@@ -29,6 +29,8 @@ Follow the [official instruction](https://www.jetbrains.com/help/phpstorm/json.h
 
     https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json
 
+Make sure there is no space at the end of the url when pasting it into your IDE or the Schema will not validate.
+
 Set `Schema Version` to `JSON Schema version 7`.
 
 Add path mappings to the packages you work on. For example:
