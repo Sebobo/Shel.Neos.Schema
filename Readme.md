@@ -1,7 +1,7 @@
 # JSON schema for Neos CMS nodetypes
 
 This repository contains a [JSON schema](https://json-schema.org), that can be used in PHPStorm or VSCode
-to validate Neos CMS nodetypes.
+to get autocompletion, typehints and validation of Neos CMS nodetype files.
 
 When the schema is stable enough it will hopefully be made available in the [schema store](https://www.schemastore.org/json/).
 
@@ -15,9 +15,8 @@ Follow the [official instruction](https://www.jetbrains.com/help/phpstorm/json.h
 
 Set `Schema Version` to `JSON Schema version 7`.
 
-Add the following path mappings:
+Add path mappings to the packages you work on. For example:
 
-    Packages/*/Configuration/NodeTypes*.yaml
     DistributionPackages/*/Configuration/NodeTypes*.yaml
 
 ## Contribution
