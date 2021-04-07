@@ -421,7 +421,7 @@
             },
             "options": {
                 "type": "object",
-                "additionalProperties": false,
+                "additionalProperties": true,
                 "properties": {
                     "nodeCreationHandlers": {
                         "type": "object",
