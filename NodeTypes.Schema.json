@@ -140,8 +140,17 @@
                                 }
                             }
                         },
-                        "ui": {
+                        "options": {
                             "type": "object",
+                            "additionalProperties": true,
+                            "properties": {
+                                "preset": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "ui": {
+                            "type": ["object", "null"],
                             "additionalProperties": false,
                             "properties": {
                                 "label": {
