@@ -1,9 +1,19 @@
 # JSON schema for Neos CMS nodetypes
 
 This repository contains a [JSON schema](https://json-schema.org), that can be used in PHPStorm or VSCode
-to get autocompletion, typehints and validation of Neos CMS nodetype files.
+to get 
+
+* autocompletion 
+* typehints 
+* validation of Neos CMS nodetypes files
 
 When the schema is stable enough it will hopefully be made available in the [schema store](https://www.schemastore.org/json/).
+
+The schema is based on the old YAML schemas we already have in Neos & Flow. 
+But they all need some converting and can be updated with the latest functionality of what JSON schema can do.
+With a bit of community effort we can upgrade them, put them in the core, replace our own schema validator 
+and make the schemas officially available on https://www.schemastore.org/json/.
+The schemastore allows your IDE to automatically download the one your need.
 
 ## How to use
 
@@ -18,6 +28,11 @@ Set `Schema Version` to `JSON Schema version 7`.
 Add path mappings to the packages you work on. For example:
 
     DistributionPackages/*/Configuration/NodeTypes*.yaml
+
+## Notes
+
+There is also a YAML version in the repo which I used first when converting the old schema.
+It works the same way as the JSON version locally, but I couldn't get it to work when loaded remotely.
 
 ## Contribution
 
