@@ -37,6 +37,28 @@
                     ]
                 }
             ]
+        },
+        "editor": {
+            "anyOf": [
+                {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "enum": [
+                        "Neos.Neos/Inspector/Editors/AssetEditor",
+                        "Neos.Neos/Inspector/Editors/BooleanEditor",
+                        "Neos.Neos/Inspector/Editors/CodeEditor",
+                        "Neos.Neos/Inspector/Editors/DateTimeEditor",
+                        "Neos.Neos/Inspector/Editors/ImageEditor",
+                        "Neos.Neos/Inspector/Editors/LinkEditor",
+                        "Neos.Neos/Inspector/Editors/ReferenceEditor",
+                        "Neos.Neos/Inspector/Editors/ReferencesEditor",
+                        "Neos.Neos/Inspector/Editors/SelectBoxEditor",
+                        "Neos.Neos/Inspector/Editors/TextFieldEditor"
+                    ]
+                }
+            ]
         }
     },
     "additionalProperties": {
@@ -229,26 +251,7 @@
                                             "$ref": "#/definitions/position"
                                         },
                                         "editor": {
-                                            "anyOf": [
-                                                {
-                                                    "type": [
-                                                        "string",
-                                                        "null"
-                                                    ],
-                                                    "enum": [
-                                                        "Neos.Neos/Inspector/Editors/AssetEditor",
-                                                        "Neos.Neos/Inspector/Editors/BooleanEditor",
-                                                        "Neos.Neos/Inspector/Editors/CodeEditor",
-                                                        "Neos.Neos/Inspector/Editors/DateTimeEditor",
-                                                        "Neos.Neos/Inspector/Editors/ImageEditor",
-                                                        "Neos.Neos/Inspector/Editors/LinkEditor",
-                                                        "Neos.Neos/Inspector/Editors/ReferenceEditor",
-                                                        "Neos.Neos/Inspector/Editors/ReferencesEditor",
-                                                        "Neos.Neos/Inspector/Editors/SelectBoxEditor",
-                                                        "Neos.Neos/Inspector/Editors/TextFieldEditor"
-                                                    ]
-                                                }
-                                            ]
+                                            "$ref": "#/definitions/editor"
                                         },
                                         "editorOptions": {
                                             "type": [
@@ -371,7 +374,7 @@
                                                     "$ref": "#/definitions/label"
                                                 },
                                                 "editor": {
-                                                    "type": "string"
+                                                    "$ref": "#/definitions/editor"
                                                 },
                                                 "editorOptions": {
                                                     "type": "object"
@@ -502,6 +505,22 @@
                                     "null",
                                     "string"
                                 ]
+                            }
+                        }
+                    },
+                    "template": {
+                        "$comment": "Related to functionality provided by https://github.com/Flowpack/Flowpack.NodeTemplates",
+                        "type": "object",
+                        "additionalProperties": true,
+                        "properties": {
+                            "childNodes": {
+                                "type": "object"
+                            },
+                            "properties": {
+                                "type": "object"
+                            },
+                            "when": {
+                                "type": "object"
                             }
                         }
                     }
