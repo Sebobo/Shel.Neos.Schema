@@ -1,0 +1,14 @@
+{
+    "name": "shel-neos-schema",
+    "version": "1.0.0",
+    "main": "test.js",
+    "author": "Sebastian Helzle <sebastian@helzle.it>",
+    "license": "MIT",
+    "devDependencies": {
+        "ajv": "^8.0.5",
+        "js-yaml": "^4.0.0"
+    },
+    "scripts": {
+        "test": "node test.js"
+    }
+}

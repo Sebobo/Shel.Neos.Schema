@@ -1,0 +1,13 @@
+My.Vendor:Content.Text:
+  label: Text element
+  superTypes:
+    Neos.Neos:Content: true
+  ui:
+    label: i18n
+  properties:
+    text:
+      type: string
+      ui:
+        inlineEditable: true
+        inspector:
+          editor: Neos.Neos/Inspector/Editors/TextFieldEditor
