@@ -9,6 +9,8 @@ to get
 * typehints 
 * validation of Neos CMS nodetypes files
 
+![Example usage in PHPStorm](neos-schema-example.gif)
+
 When the schema is stable enough it will hopefully be made available in the [schema store](https://www.schemastore.org/json/).
 
 The schema is based on the old YAML schemas we already have in Neos & Flow. 
