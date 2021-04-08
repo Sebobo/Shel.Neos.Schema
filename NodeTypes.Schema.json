@@ -31,7 +31,10 @@
                     "const": "i18n"
                 },
                 {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             ]
         }
@@ -169,7 +172,10 @@
                             }
                         },
                         "ui": {
-                            "type": ["object", "null"],
+                            "type": [
+                                "object",
+                                "null"
+                            ],
                             "additionalProperties": false,
                             "properties": {
                                 "label": {
@@ -223,9 +229,25 @@
                                             "$ref": "#/definitions/position"
                                         },
                                         "editor": {
-                                            "type": [
-                                                "string",
-                                                "null"
+                                            "anyOf": [
+                                                {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ],
+                                                    "enum": [
+                                                        "Neos.Neos/Inspector/Editors/AssetEditor",
+                                                        "Neos.Neos/Inspector/Editors/BooleanEditor",
+                                                        "Neos.Neos/Inspector/Editors/CodeEditor",
+                                                        "Neos.Neos/Inspector/Editors/DateTimeEditor",
+                                                        "Neos.Neos/Inspector/Editors/ImageEditor",
+                                                        "Neos.Neos/Inspector/Editors/LinkEditor",
+                                                        "Neos.Neos/Inspector/Editors/ReferenceEditor",
+                                                        "Neos.Neos/Inspector/Editors/ReferencesEditor",
+                                                        "Neos.Neos/Inspector/Editors/SelectBoxEditor",
+                                                        "Neos.Neos/Inspector/Editors/TextFieldEditor"
+                                                    ]
+                                                }
                                             ]
                                         },
                                         "editorOptions": {
