@@ -1,5 +1,7 @@
 # JSON schema for Neos CMS nodetypes
 
+[![Tests](https://github.com/Sebobo/Shel.Neos.Schema/actions/workflows/tests.yml/badge.svg)](https://github.com/Sebobo/Shel.Neos.Schema/actions/workflows/tests.yml)
+
 This repository contains a [JSON schema](https://json-schema.org), that can be used in PHPStorm or VSCode
 to get 
 
