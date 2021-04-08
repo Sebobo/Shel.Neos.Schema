@@ -24,6 +24,16 @@
                     "type": "string"
                 }
             }
+        },
+        "label": {
+            "anyOf": [
+                {
+                    "const": "i18n"
+                },
+                {
+                    "type": ["string", "null"]
+                }
+            ]
         }
     },
     "additionalProperties": {
@@ -40,7 +50,7 @@
                 "type": "boolean"
             },
             "label": {
-                "type": "string"
+                "$ref": "#/definitions/label"
             },
             "constraints": {
                 "type": "object",
@@ -163,10 +173,7 @@
                             "additionalProperties": false,
                             "properties": {
                                 "label": {
-                                    "type": [
-                                        "string",
-                                        "null"
-                                    ]
+                                    "$ref": "#/definitions/label"
                                 },
                                 "help": {
                                     "$ref": "#/definitions/help"
@@ -233,6 +240,20 @@
                                                     "items": {
                                                         "type": "string"
                                                     }
+                                                },
+                                                "values": {
+                                                    "type": "object",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "label": {
+                                                                "$ref": "#/definitions/label"
+                                                            },
+                                                            "icon": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             }
                                         },
@@ -278,7 +299,7 @@
                 "additionalProperties": false,
                 "properties": {
                     "label": {
-                        "type": "string"
+                        "$ref": "#/definitions/label"
                     },
                     "icon": {
                         "type": "string"
@@ -325,7 +346,7 @@
                                             "additionalProperties": false,
                                             "properties": {
                                                 "label": {
-                                                    "type": "string"
+                                                    "$ref": "#/definitions/label"
                                                 },
                                                 "editor": {
                                                     "type": "string"
@@ -363,7 +384,7 @@
                                     "additionalProperties": false,
                                     "properties": {
                                         "label": {
-                                            "type": "string"
+                                            "$ref": "#/definitions/label"
                                         },
                                         "position": {
                                             "$ref": "#/definitions/position"
@@ -381,7 +402,7 @@
                                     "additionalProperties": false,
                                     "properties": {
                                         "label": {
-                                            "type": "string"
+                                            "$ref": "#/definitions/label"
                                         },
                                         "position": {
                                             "$ref": "#/definitions/position"
@@ -405,7 +426,7 @@
                                     "additionalProperties": false,
                                     "properties": {
                                         "label": {
-                                            "type": "string"
+                                            "$ref": "#/definitions/label"
                                         },
                                         "position": {
                                             "$ref": "#/definitions/position"
