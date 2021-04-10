@@ -59,6 +59,185 @@
                     ]
                 }
             ]
+        },
+        "simpleValidator": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "additionalProperties": false
+        },
+        "validation": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "additionalProperties": {
+                "type": [
+                    "object",
+                    "array",
+                    "null"
+                ]
+            },
+            "properties": {
+                "Neos.Neos/Validation/BooleanValidator": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "expectedValue": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "Neos.Neos/Validation/DateTimeValidator": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "locale": {
+                            "type": "string"
+                        },
+                        "strictMode": {
+                            "type": "boolean"
+                        },
+                        "formatLength": {
+                            "enum": ["default","full", "long", "medium", "short"]
+                        },
+                        "formatType": {
+                            "enum": ["date", "time", "dateTime"]
+                        }
+                    }
+                },
+                "Neos.Neos/Validation/DateTimeRangeValidator": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "earliestDate": {
+                            "type": "string"
+                        },
+                        "latestDate": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "Neos.Neos/Validation/EmailAddressValidator": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "strict": {
+                            "type": "boolean"
+                        },
+                        "checkDns": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "Neos.Neos/Validation/FloatValidator": {
+                    "$ref": "#/definitions/simpleValidator"
+                },
+                "Neos.Neos/Validation/IntegerValidator": {
+                    "$ref": "#/definitions/simpleValidator"
+                },
+                "Neos.Neos/Validation/LabelValidator": {
+                    "$ref": "#/definitions/simpleValidator"
+                },
+                "Neos.Neos/Validation/LocaleIdentifierValidator": {
+                    "$ref": "#/definitions/simpleValidator"
+                },
+                "Neos.Neos/Validation/NumberValidator": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "locale": {
+                            "type": "string"
+                        },
+                        "strictMode": {
+                            "type": "boolean"
+                        },
+                        "formatLength": {
+                            "enum": ["default","full", "long", "medium", "short"]
+                        },
+                        "formatType": {
+                            "enum": ["decimal", "percent", "currency"]
+                        }
+                    }
+                },
+                "Neos.Neos/Validation/NumberRangeValidator": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "minimum": {
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "maximum": {
+                            "type": "integer",
+                            "minimum": 1
+                        }
+                    }
+                },
+                "Neos.Neos/Validation/NotEmptyValidator": {
+                    "$ref": "#/definitions/simpleValidator"
+                },
+                "Neos.Neos/Validation/RegularExpressionValidator": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "regularExpression": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "Neos.Neos/Validation/StringValidator": {
+                    "$ref": "#/definitions/simpleValidator"
+                },
+                "Neos.Neos/Validation/StringLengthValidator": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "minimum": {
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "maximum": {
+                            "type": "integer",
+                            "minimum": 1
+                        },
+                        "ignoreHtml": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "Neos.Neos/Validation/TextValidator": {
+                    "$ref": "#/definitions/simpleValidator"
+                },
+                "Neos.Neos/Validation/UuidValidator": {
+                    "$ref": "#/definitions/simpleValidator"
+                }
+            }
         }
     },
     "additionalProperties": {
@@ -308,13 +487,7 @@
                             }
                         },
                         "validation": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": [
-                                    "object",
-                                    "array"
-                                ]
-                            }
+                            "$ref": "#/definitions/validation"
                         }
                     }
                 }
@@ -382,16 +555,7 @@
                                             }
                                         },
                                         "validation": {
-                                            "type": [
-                                                "object",
-                                                "null"
-                                            ],
-                                            "additionalProperties": {
-                                                "type": [
-                                                    "array",
-                                                    "object"
-                                                ]
-                                            }
+                                            "$ref": "#/definitions/validation"
                                         }
                                     }
                                 }

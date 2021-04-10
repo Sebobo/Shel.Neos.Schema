@@ -1,0 +1,50 @@
+My.Vendor:Content.Validators:
+  label: Element with many validators
+  superTypes:
+    Neos.Neos:Content: true
+  ui:
+    label: i18n
+  properties:
+    text:
+      type: string
+      validation:
+        My.Custom/Validator:
+          myCustomProperty: true
+
+        Neos.Neos/Validation/BooleanValidator:
+          expectedValue: false
+        Neos.Neos/Validation/DateTimeValidator:
+          locale: en
+          strictMode: false
+          formatLength: default
+          formatType: date
+        Neos.Neos/Validation/DateTimeRangeValidator:
+          earliestDate: 1.1.2000
+          latestDate: 2.1.2000
+        Neos.Neos/Validation/EmailAddressValidator:
+          checkDns: false
+          strict: false
+        Neos.Neos/Validation/FloatValidator: { }
+        Neos.Neos/Validation/IntegerValidator: { }
+        Neos.Neos/Validation/LabelValidator: { }
+        Neos.Neos/Validation/LocaleIdentifierValidator: { }
+        Neos.Neos/Validation/NotEmptyValidator: { }
+        Neos.Neos/Validation/NumberValidator:
+          locale: en
+          strictMode: false
+          formatLength: default
+          formatType: decimal
+        Neos.Neos/Validation/NumberRangeValidator:
+          minimum: 0
+          maximum: 2
+        Neos.Neos/Validation/RegularExpressionValidator:
+          regularExpression: foo
+        Neos.Neos/Validation/StringValidator: {}
+        Neos.Neos/Validation/StringLengthValidator:
+          minimum: 0
+          maximum: 1
+          ignoreHtml: false
+        Neos.Neos/Validation/TextValidator: { }
+        Neos.Neos/Validation/UuidValidator: { }
+
+
