@@ -46,6 +46,17 @@ Add path mappings to the packages you work on. For example:
 Visual Studio Code and [other editors](https://www.schemastore.org/json/) also support JSON schema. 
 Instructions are easy to find with your favourite search engine.
 
+### Schema variants
+
+Certain declarations in a NodeTypes.yaml file are valid but not considered as "best practise".
+The default schema mentioned in the instructions above will not enforce those.
+
+If you want additional strict validation, you can instead use the strict schema with the url:
+
+    https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.Strict.json
+
+The strict schema inherits fully from the standard schema and just adds some additional validations.
+
 ## Notes
 
 There is also a YAML version in the repo which I used first when converting the old schema.
