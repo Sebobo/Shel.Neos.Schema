@@ -29,7 +29,11 @@
             "title": "Shown in the Neos UI",
             "description": "Can be \"i18n\" for automatic translation based on the name, a translation shorthand string like \"My.Package:NodeTypes.MyContent:ui.label\", or a simple string.",
             "x-intellij-html-description": "<p><b>Examples:</b></p>\n<ul><li><i>i18n</i> looks automatically for a matching translation based on the name</li><li><i>My.Package:NodeTypes.MyContent:ui.label</i> uses translation shorthand string</li><li><i>Some static label</i></li></ul>\n",
-            "examples": ["i18n", "Neos.Neos:NodeTypes.Document:ui.label", "Some label"],
+            "examples": [
+                "i18n",
+                "Neos.Neos:NodeTypes.Document:ui.label",
+                "Some label"
+            ],
             "anyOf": [
                 {
                     "const": "i18n"
@@ -342,7 +346,10 @@
                                     "default": false
                                 },
                                 "maximumFileSize": {
-                                    "type": ["integer", "null"],
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ],
                                     "default": null
                                 },
                                 "constraints": {
