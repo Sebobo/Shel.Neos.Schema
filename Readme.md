@@ -8,6 +8,7 @@ to get
 * autocompletion 
 * typehints 
 * validation of Neos CMS nodetypes files
+* inline documentation
 
 ![Example usage in PHPStorm](neos-schema-example.gif)
 
@@ -19,11 +20,30 @@ With a bit of community effort we can upgrade them, put them in the core, replac
 and make the schemas officially available on https://www.schemastore.org/json/.
 The schemastore allows your IDE to automatically download the one your need.
 
-## Notes
+## Features:
 
-The current schema is quite strict. 
-For example, it only accepts one nodetype per file.
-It possibly makes sense to offer a more relaxed variant. Or control this inside a Yaml file somehow.
+### Autocompletion
+
+In addition to usual fields there are also conditional schema definitions for the following properties:
+
+* `editor` (due to a [bug](https://ajv.js.org/) in IntelliJ, autocompletion doesn't show the matching `editorOptions` but validation works)
+* `validation`
+
+
+### Typehints
+
+Typehints for all known Neos core nodetype properties.
+
+### Validation
+
+You can run validations against your nodetypes with [Ajv](https://ajv.js.org/) or similar.
+See [test.js](test.js) for an example.
+
+### Inline docs
+
+This is still work-in-progress and only a few entries properties have full documentation.
+Feel free to open a PR to add more.
+We support the fields `title`, `description` and `x-intellij-html-description` for html docs.
 
 ## How to use
 
@@ -51,16 +71,25 @@ Instructions are easy to find with your favourite search engine.
 Certain declarations in a NodeTypes.yaml file are valid but not considered as "best practise".
 The default schema mentioned in the instructions above will not enforce those.
 
+#### Strict schema
+
 If you want additional strict validation, you can instead use the strict schema with the url:
 
     https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.Strict.json
 
-The strict schema inherits fully from the standard schema and just adds some additional validations.
+Implemented additional checks:
 
-## Notes
+* Only 1 nodetype per file
 
-There is also a YAML version in the repo which I used first when converting the old schema.
-It works the same way as the JSON version locally, but I couldn't get it to work when loaded remotely.
+## FAQ
+
+### I get duplicate results for autocompletion
+
+This happens when you have the Neos plugin installed in an IntelliJ IDE. 
+The plugin also provides some basic autocompletion hints.
+
+The developer of the plugin plans to use this schema in the future instead.
+Then the duplicates will disappear.
 
 ## Contribution
 
