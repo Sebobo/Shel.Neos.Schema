@@ -41,25 +41,551 @@
         "editor": {
             "anyOf": [
                 {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "properties": {
+                        "editor": {
+                            "type": "string",
+                            "not": {
+                                "enum": [
+                                    "Neos.Neos/Inspector/Editors/TextAreaEditor",
+                                    "Neos.Neos/Inspector/Editors/TextFieldEditor",
+                                    "Neos.Neos/Inspector/Editors/SelectBoxEditor",
+                                    "Neos.Neos/Inspector/Editors/CodeEditor",
+                                    "Neos.Neos/Inspector/Editors/AssetEditor",
+                                    "Neos.Neos/Inspector/Editors/BooleanEditor",
+                                    "Neos.Neos/Inspector/Editors/ReferenceEditor",
+                                    "Neos.Neos/Inspector/Editors/ReferencesEditor",
+                                    "Neos.Neos/Inspector/Editors/LinkEditor",
+                                    "Neos.Neos/Inspector/Editors/ImageEditor",
+                                    "Neos.Neos/Inspector/Editors/DateTimeEditor"
+                                ]
+                            }
+                        },
+                        "editorOptions": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
                 },
                 {
-                    "enum": [
-                        "Neos.Neos/Inspector/Editors/AssetEditor",
-                        "Neos.Neos/Inspector/Editors/BooleanEditor",
-                        "Neos.Neos/Inspector/Editors/CodeEditor",
-                        "Neos.Neos/Inspector/Editors/DateTimeEditor",
-                        "Neos.Neos/Inspector/Editors/ImageEditor",
-                        "Neos.Neos/Inspector/Editors/LinkEditor",
-                        "Neos.Neos/Inspector/Editors/ReferenceEditor",
-                        "Neos.Neos/Inspector/Editors/ReferencesEditor",
-                        "Neos.Neos/Inspector/Editors/SelectBoxEditor",
-                        "Neos.Neos/Inspector/Editors/TextFieldEditor",
-                        "Neos.Neos/Inspector/Editors/TextAreaEditor"
-                    ]
+                    "properties": {
+                        "editor": {
+                            "const": "Neos.Neos/Inspector/Editors/TextAreaEditor"
+                        },
+                        "editorOptions": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "disabled": {
+                                    "type": [
+                                        "boolean",
+                                        "null"
+                                    ],
+                                    "default": false
+                                },
+                                "maxlength": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ],
+                                    "minimum": 1,
+                                    "default": null
+                                },
+                                "readonly": {
+                                    "type": [
+                                        "boolean",
+                                        "null"
+                                    ],
+                                    "default": false
+                                },
+                                "placeholder": {
+                                    "$ref": "#/definitions/label"
+                                },
+                                "minRows": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ],
+                                    "minimum": 1,
+                                    "default": 2
+                                },
+                                "expandedRows": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ],
+                                    "minimum": 2,
+                                    "default": 6
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "editor": {
+                            "const": "Neos.Neos/Inspector/Editors/SelectBoxEditor"
+                        },
+                        "editorOptions": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "highlight": {
+                                    "type": "boolean"
+                                },
+                                "dataSourceIdentifier": {
+                                    "type": "string"
+                                },
+                                "dataSourceUri": {
+                                    "type": "string"
+                                },
+                                "dataSourceDisableCaching": {
+                                    "type": "boolean"
+                                },
+                                "dataSourceAdditionalData": {
+                                    "type": "object"
+                                },
+                                "allowEmpty": {
+                                    "type": "boolean"
+                                },
+                                "placeholder": {
+                                    "$ref": "#/definitions/label"
+                                },
+                                "disabled": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "multiple": {
+                                    "type": "boolean"
+                                },
+                                "minimumResultsForSearch": {
+                                    "type": "integer",
+                                    "minimum": 1,
+                                    "default": 5
+                                },
+                                "threshold": {
+                                    "type": "integer",
+                                    "default": 2,
+                                    "minimum": 1
+                                },
+                                "values": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "object",
+                                        "properties": {
+                                            "label": {
+                                                "$ref": "#/definitions/label"
+                                            },
+                                            "icon": {
+                                                "type": "string"
+                                            },
+                                            "group": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "editor": {
+                            "const": "Neos.Neos/Inspector/Editors/AssetEditor"
+                        },
+                        "editorOptions": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "placeholder": {
+                                    "$ref": "#/definitions/label"
+                                },
+                                "multiple": {
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "imagesOnly": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "disabled": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "features": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "upload": {
+                                            "type": "boolean",
+                                            "default": true
+                                        },
+                                        "mediaBrowser": {
+                                            "type": "boolean",
+                                            "default": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "editor": {
+                            "title": "Will render a checkbox in the Neos UI",
+                            "const": "Neos.Neos/Inspector/Editors/BooleanEditor"
+                        },
+                        "editorOptions": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "disabled": {
+                                    "type": "boolean",
+                                    "default": false
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "editor": {
+                            "const": "Neos.Neos/Inspector/Editors/CodeEditor"
+                        },
+                        "editorOptions": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "highlightingMode": {
+                                    "type": "string",
+                                    "default": "htmlmixed"
+                                },
+                                "buttonLabel": {
+                                    "$ref": "#/definitions/label"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "editor": {
+                            "const": "Neos.Neos/Inspector/Editors/DateTimeEditor"
+                        },
+                        "editorOptions": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "placeholder": {
+                                    "$ref": "#/definitions/label"
+                                },
+                                "format": {
+                                    "type": "string"
+                                },
+                                "disabled": {
+                                    "type": "boolean"
+                                },
+                                "minuteStep": {
+                                    "type": "integer",
+                                    "default": 5
+                                },
+                                "timeConstraints": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "minutes": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "min": {
+                                                    "type": "integer",
+                                                    "minimum": 0,
+                                                    "maximum": 59,
+                                                    "default": 0
+                                                },
+                                                "max": {
+                                                    "type": "integer",
+                                                    "minimum": 1,
+                                                    "maximum": 59,
+                                                    "default": 59
+                                                },
+                                                "step": {
+                                                    "type": "integer",
+                                                    "minimum": 1,
+                                                    "maximum": 30,
+                                                    "default": 5
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "editor": {
+                            "const": "Neos.Neos/Inspector/Editors/ImageEditor"
+                        },
+                        "editorOptions": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "disabled": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "maximumFileSize": {
+                                    "type": ["integer", "null"],
+                                    "default": null
+                                },
+                                "constraints": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "mediaTypes": {
+                                            "type": "array",
+                                            "uniqueItems": true,
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "features": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "crop": {
+                                            "type": "boolean",
+                                            "default": true
+                                        },
+                                        "resize": {
+                                            "type": "boolean",
+                                            "default": false
+                                        },
+                                        "mediaBrowser": {
+                                            "type": "boolean",
+                                            "default": true
+                                        },
+                                        "upload": {
+                                            "type": "boolean",
+                                            "default": true
+                                        }
+                                    }
+                                },
+                                "crop": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "aspectRatio": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "options": {
+                                                    "type": "object",
+                                                    "additionalProperties": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "width": {
+                                                                "type": "integer",
+                                                                "minimum": 0
+                                                            },
+                                                            "height": {
+                                                                "type": "integer",
+                                                                "minimum": 0
+                                                            },
+                                                            "label": {
+                                                                "$ref": "#/definitions/label"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "enableOriginal": {
+                                                    "type": "boolean",
+                                                    "default": true
+                                                },
+                                                "allowCustom": {
+                                                    "type": "boolean",
+                                                    "default": true
+                                                },
+                                                "locked": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "width": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "height": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "editor": {
+                            "const": "Neos.Neos/Inspector/Editors/LinkEditor"
+                        },
+                        "editorOptions": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "nodeTypes": {
+                                    "oneOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "uniqueItems": true,
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "startingPoint": {
+                                    "type": "string"
+                                },
+                                "placeholder": {
+                                    "$ref": "#/definitions/label"
+                                },
+                                "disabled": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "assets": {
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "nodes": {
+                                    "type": "boolean",
+                                    "default": true
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "editor": {
+                            "const": "Neos.Neos/Inspector/Editors/ReferenceEditor"
+                        },
+                        "editorOptions": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "placeholder": {
+                                    "$ref": "#/definitions/label"
+                                },
+                                "threshold": {
+                                    "type": "integer",
+                                    "default": 2,
+                                    "minimum": 1
+                                },
+                                "nodeTypes": {
+                                    "type": "array",
+                                    "uniqueItems": true,
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "startingPoint": {
+                                    "type": "string"
+                                },
+                                "disabled": {
+                                    "type": "boolean",
+                                    "default": false
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "editor": {
+                            "const": "Neos.Neos/Inspector/Editors/ReferencesEditor"
+                        },
+                        "editorOptions": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "placeholder": {
+                                    "$ref": "#/definitions/label"
+                                },
+                                "threshold": {
+                                    "type": "integer",
+                                    "default": 2,
+                                    "minimum": 1
+                                },
+                                "nodeTypes": {
+                                    "type": "array",
+                                    "uniqueItems": true,
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "startingPoint": {
+                                    "type": "string"
+                                },
+                                "disabled": {
+                                    "type": "boolean",
+                                    "default": false
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "editor": {
+                            "const": "Neos.Neos/Inspector/Editors/TextFieldEditor"
+                        },
+                        "editorOptions": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "placeholder": {
+                                    "$ref": "#/definitions/label"
+                                },
+                                "disabled": {
+                                    "type": [
+                                        "boolean",
+                                        "null"
+                                    ],
+                                    "default": false
+                                },
+                                "maxlength": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ],
+                                    "minimum": 1,
+                                    "default": null
+                                },
+                                "readonly": {
+                                    "type": [
+                                        "boolean",
+                                        "null"
+                                    ],
+                                    "default": false
+                                }
+                            }
+                        }
+                    }
                 }
             ]
         },
@@ -109,10 +635,20 @@
                             "type": "boolean"
                         },
                         "formatLength": {
-                            "enum": ["default","full", "long", "medium", "short"]
+                            "enum": [
+                                "default",
+                                "full",
+                                "long",
+                                "medium",
+                                "short"
+                            ]
                         },
                         "formatType": {
-                            "enum": ["date", "time", "dateTime"]
+                            "enum": [
+                                "date",
+                                "time",
+                                "dateTime"
+                            ]
                         }
                     }
                 },
@@ -172,10 +708,20 @@
                             "type": "boolean"
                         },
                         "formatLength": {
-                            "enum": ["default","full", "long", "medium", "short"]
+                            "enum": [
+                                "default",
+                                "full",
+                                "long",
+                                "medium",
+                                "short"
+                            ]
                         },
                         "formatType": {
-                            "enum": ["decimal", "percent", "currency"]
+                            "enum": [
+                                "decimal",
+                                "percent",
+                                "currency"
+                            ]
                         }
                     }
                 },
@@ -348,7 +894,25 @@
                     "additionalProperties": false,
                     "properties": {
                         "type": {
-                            "type": "string"
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "enum": [
+                                        "string",
+                                        "DateTime",
+                                        "boolean",
+                                        "integer",
+                                        "reference",
+                                        "references",
+                                        "array",
+                                        "Neos\\Media\\Domain\\Model\\Asset",
+                                        "array<Neos\\Media\\Domain\\Model\\Asset>",
+                                        "Neos\\Media\\Domain\\Model\\ImageInterface"
+                                    ]
+                                }
+                            ]
                         },
                         "defaultValue": {
                             "type": [
@@ -410,82 +974,57 @@
                                     ]
                                 },
                                 "inspector": {
-                                    "type": [
-                                        "object",
-                                        "null"
-                                    ],
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "hidden": {
-                                            "type": [
-                                                "boolean",
-                                                "null",
-                                                "string"
-                                            ]
-                                        },
-                                        "group": {
-                                            "type": [
-                                                "string",
-                                                "null"
-                                            ]
-                                        },
-                                        "position": {
-                                            "$ref": "#/definitions/position"
-                                        },
-                                        "editor": {
+                                    "anyOf": [
+                                        {
                                             "$ref": "#/definitions/editor"
                                         },
-                                        "editorOptions": {
+                                        {
                                             "type": [
                                                 "object",
                                                 "null"
                                             ],
+                                            "additionalProperties": false,
                                             "properties": {
-                                                "nodeTypes": {
-                                                    "type": "array",
-                                                    "uniqueItems": true,
-                                                    "items": {
-                                                        "type": "string"
-                                                    }
+                                                "hidden": {
+                                                    "type": [
+                                                        "boolean",
+                                                        "null",
+                                                        "string"
+                                                    ]
                                                 },
-                                                "values": {
-                                                    "type": "object",
-                                                    "items": {
+                                                "group": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                },
+                                                "position": {
+                                                    "$ref": "#/definitions/position"
+                                                },
+                                                "editorListeners": {
+                                                    "type": [
+                                                        "object",
+                                                        "null"
+                                                    ],
+                                                    "additionalProperties": {
                                                         "type": "object",
+                                                        "additionalProperties": false,
                                                         "properties": {
-                                                            "label": {
-                                                                "$ref": "#/definitions/label"
-                                                            },
-                                                            "icon": {
+                                                            "property": {
                                                                 "type": "string"
+                                                            },
+                                                            "handler": {
+                                                                "type": "string"
+                                                            },
+                                                            "handlerOptions": {
+                                                                "type": "object"
                                                             }
                                                         }
                                                     }
                                                 }
                                             }
-                                        },
-                                        "editorListeners": {
-                                            "type": [
-                                                "object",
-                                                "null"
-                                            ],
-                                            "additionalProperties": {
-                                                "type": "object",
-                                                "additionalProperties": false,
-                                                "properties": {
-                                                    "property": {
-                                                        "type": "string"
-                                                    },
-                                                    "handler": {
-                                                        "type": "string"
-                                                    },
-                                                    "handlerOptions": {
-                                                        "type": "object"
-                                                    }
-                                                }
-                                            }
                                         }
-                                    }
+                                    ]
                                 }
                             }
                         },
@@ -543,19 +1082,20 @@
                                             "type": "string"
                                         },
                                         "ui": {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "properties": {
-                                                "label": {
-                                                    "$ref": "#/definitions/label"
-                                                },
-                                                "editor": {
+                                            "anyOf": [
+                                                {
                                                     "$ref": "#/definitions/editor"
                                                 },
-                                                "editorOptions": {
-                                                    "type": "object"
+                                                {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "label": {
+                                                            "$ref": "#/definitions/label"
+                                                        }
+                                                    }
                                                 }
-                                            }
+                                            ]
                                         },
                                         "validation": {
                                             "$ref": "#/definitions/validation"

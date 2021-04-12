@@ -1,0 +1,178 @@
+My.Vendor:Content.Editors:
+  label: Element with many editors
+  superTypes:
+    Neos.Neos:Content: true
+  ui:
+    label: i18n
+    creationDialog:
+      elements:
+        textArea:
+          ui:
+            editor: Neos.Neos/Inspector/Editors/TextAreaEditor
+            editorOptions:
+              placeholder: In the creation dialog
+  properties:
+    custom:
+      ui:
+        inspector:
+          editor: 'My/Cool/Editor'
+          editorOptions:
+            myOption: 5
+
+    textArea:
+      ui:
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/TextAreaEditor'
+          editorOptions:
+            maxlength: 20
+            minRows: 2
+            expandedRows: 6
+            disabled: false
+            readonly: false
+            placeholder: 'ClientEval: node.properties.titleOverride || node.properties.title'
+
+    textField:
+      type: string
+      ui:
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/TextFieldEditor'
+          editorOptions:
+            placeholder: i18n
+            disabled: false
+            maxlength: 10
+            readonly: false
+
+    selectBox:
+      ui:
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            allowEmpty: true
+            placeholder: i18n
+            values:
+              foo:
+                label: i18n
+                icon: 'file'
+              bar:
+                label: i18n
+                icon: 'newspaper'
+
+    boolean:
+      ui:
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/BooleanEditor'
+          editorOptions:
+            disabled: false
+
+    code:
+      type: string
+      ui:
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/CodeEditor'
+          editorOptions:
+            highlightingMode: htmlmixed
+
+    dateTime:
+      type: DateTime
+      ui:
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/CodeEditor'
+          editorOptions:
+            highlightingMode: htmlmixed
+
+    asset:
+      type: Neos\Media\Domain\Model\Asset
+      ui:
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/AssetEditor'
+          editorOptions:
+            placeholder: i18n
+            multiple: false
+            imagesOnly: false
+            disabled: false
+            features:
+              upload: true
+              mediaBrowser: true
+
+    assets:
+      type: array<Neos\Media\Domain\Model\Asset>
+      ui:
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/AssetEditor'
+          editorOptions:
+            placeholder: i18n
+            multiple: true
+            imagesOnly: false
+            disabled: false
+            features:
+              upload: true
+              mediaBrowser: true
+
+    reference:
+      type: reference
+      ui:
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/ReferenceEditor'
+          editorOptions:
+            placeholder: i18n
+            threshold: 2
+            nodeTypes: [ Neos.Neos:Document ]
+            startingPoint: '/sites'
+            disabled: false
+
+    references:
+      type: references
+      ui:
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/ReferencesEditor'
+          editorOptions:
+            placeholder: i18n
+            threshold: 2
+            nodeTypes: [Neos.Neos:Document]
+            startingPoint: '/sites'
+            disabled: false
+
+    link:
+      type: string
+      ui:
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/LinkEditor'
+          editorOptions:
+            nodeTypes: ['Neos.Neos:Document']
+            startingPoint: '/sites'
+            placeholder: i18n
+            disabled: false
+            assets: false
+            nodes: true
+
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/ImageEditor'
+          editorOptions:
+            disabled: false
+            maximumFileSize: null
+            constraints:
+              mediaTypes: ['image/jpeg']
+            features:
+              crop: true
+              resize: false
+              mediaBrowser: true
+              upload: true
+            crop:
+              aspectRatio:
+                allowCustom: true
+                enableOriginal: true
+                locked:
+                  height: 1
+                  width: 1
+                options:
+                  16-9:
+                    width: 16
+                    height: 9
+                    label: Widescreen
+                  4-3:
+                    width: 4
+                    height: 3
+                    label: Normal screens
