@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://github.com/Sebobo/Shel.Neos.Schema/blob/main/NodeTypes.Schema.json",
+    "$id": "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json",
     "title": "Neos NodeTypes Schema",
     "type": "object",
     "minProperties": 1,
