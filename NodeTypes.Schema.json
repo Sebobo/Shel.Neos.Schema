@@ -46,6 +46,16 @@
                 }
             ]
         },
+        "icon": {
+            "type": "string",
+            "title": "Shown in the Neos UI",
+            "description": "All free FontAwesome 5 icons can be referenced by their icon-classes. For backwards compatibility reason you can still use a \"icon-\" prefix.",
+            "x-intellij-html-description": "<p>All free <a href=\"https://fontawesome.com/icons?d=gallery&m=free\">FontAwesome 5 icons</a> can be referenced by their icon-classes. For backwards compatibility reason you can still use a \"icon-\" prefix.</p><p><b>Examples:</b></p>\n<ul><li><i>fas fa-home</i></li><li><i>icon-home</i></li></ul></p>",
+            "examples": [
+                "fas fa-home",
+                "icon-home"
+            ]
+        },
         "editor": {
             "anyOf": [
                 {
@@ -184,7 +194,7 @@
                                                 "$ref": "#/definitions/label"
                                             },
                                             "icon": {
-                                                "type": "string"
+                                                "$ref": "#/definitions/icon"
                                             },
                                             "group": {
                                                 "type": "string"
@@ -1098,7 +1108,7 @@
                         "$ref": "#/definitions/label"
                     },
                     "icon": {
-                        "type": "string"
+                        "$ref": "#/definitions/icon"
                     },
                     "group": {
                         "type": "string"
@@ -1178,7 +1188,7 @@
                                             "$ref": "#/definitions/position"
                                         },
                                         "icon": {
-                                            "type": "string"
+                                            "$ref": "#/definitions/icon"
                                         }
                                     }
                                 }
@@ -1199,7 +1209,7 @@
                                             "type": "string"
                                         },
                                         "icon": {
-                                            "type": "string"
+                                            "$ref": "#/definitions/icon"
                                         },
                                         "collapsed": {
                                             "type": "boolean"
