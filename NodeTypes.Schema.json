@@ -798,6 +798,51 @@
                     "$ref": "#/definitions/simpleValidator"
                 }
             }
+        },
+        "nodeTemplate": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+                "childNodes": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/nodeTemplateChildNode"
+                    }
+                },
+                "properties": {
+                    "type": "object"
+                },
+                "when": {
+                    "$comment": "EEL-expression to determine whether the template should be applied",
+                    "type": "string"
+                },
+                "withItems": {
+                    "oneOf": [
+                        {
+                            "type": "array"
+                        },
+                        {
+                            "$comment": "An EEL expression",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        "nodeTemplateChildNode": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/nodeTemplate"
+            }],
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "name": {
+                    "$comment": "Identify the child node this template is applied to by this name",
+                    "type": "string"
+                }
+            }
         }
     },
     "additionalProperties": {
@@ -1228,19 +1273,7 @@
                     },
                     "template": {
                         "$comment": "Related to functionality provided by https://github.com/Flowpack/Flowpack.NodeTemplates",
-                        "type": "object",
-                        "additionalProperties": true,
-                        "properties": {
-                            "childNodes": {
-                                "type": "object"
-                            },
-                            "properties": {
-                                "type": "object"
-                            },
-                            "when": {
-                                "type": "object"
-                            }
-                        }
+                        "$ref": "#/definitions/nodeTemplate"
                     }
                 }
             }
