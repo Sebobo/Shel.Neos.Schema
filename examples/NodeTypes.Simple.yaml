@@ -11,3 +11,12 @@ My.Vendor:Content.Text:
         inlineEditable: true
         inspector:
           editor: Neos.Neos/Inspector/Editors/TextFieldEditor
+        inline:
+          editorOptions:
+            formatting:
+              a: true
+            linking:
+              anchor: true
+            placeholder: i18n
+            autoparagraph: false
+

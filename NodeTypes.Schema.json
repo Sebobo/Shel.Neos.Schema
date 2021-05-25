@@ -610,6 +610,127 @@
                 }
             ]
         },
+        "inlineEditor": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "editorOptions": {
+                    "properties": {
+                        "autoparagraph": {
+                            "type": "boolean"
+                        },
+                        "placeholder": {
+                            "$ref": "#/definitions/label"
+                        },
+                        "linking": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "boolean"
+                            },
+                            "properties": {
+                                "anchor": {
+                                    "type": "boolean"
+                                },
+                                "title": {
+                                    "type": "boolean"
+                                },
+                                "relNoFollow": {
+                                    "type": "boolean"
+                                },
+                                "targetBlank": {
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        "formatting": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "boolean"
+                            },
+                            "properties": {
+                                "strong": {
+                                    "type": "boolean"
+                                },
+                                "em": {
+                                    "type": "boolean"
+                                },
+                                "u": {
+                                    "type": "boolean"
+                                },
+                                "sub": {
+                                    "type": "boolean"
+                                },
+                                "sup": {
+                                    "type": "boolean"
+                                },
+                                "del": {
+                                    "type": "boolean"
+                                },
+                                "p": {
+                                    "type": "boolean"
+                                },
+                                "h1": {
+                                    "type": "boolean"
+                                },
+                                "h2": {
+                                    "type": "boolean"
+                                },
+                                "h3": {
+                                    "type": "boolean"
+                                },
+                                "h4": {
+                                    "type": "boolean"
+                                },
+                                "h5": {
+                                    "type": "boolean"
+                                },
+                                "h6": {
+                                    "type": "boolean"
+                                },
+                                "pre": {
+                                    "type": "boolean"
+                                },
+                                "underline": {
+                                    "type": "boolean"
+                                },
+                                "strikethrough": {
+                                    "type": "boolean"
+                                },
+                                "removeFormat": {
+                                    "type": "boolean"
+                                },
+                                "left": {
+                                    "type": "boolean"
+                                },
+                                "right": {
+                                    "type": "boolean"
+                                },
+                                "center": {
+                                    "type": "boolean"
+                                },
+                                "justify": {
+                                    "type": "boolean"
+                                },
+                                "table": {
+                                    "type": "boolean"
+                                },
+                                "ol": {
+                                    "type": "boolean"
+                                },
+                                "ul": {
+                                    "type": "boolean"
+                                },
+                                "a": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "simpleValidator": {
             "type": [
                 "object",
@@ -1028,10 +1149,7 @@
                                     "type": "boolean"
                                 },
                                 "inline": {
-                                    "type": [
-                                        "null",
-                                        "object"
-                                    ]
+                                    "$ref": "#/definitions/inlineEditor"
                                 },
                                 "showInCreationDialog": {
                                     "type": [
