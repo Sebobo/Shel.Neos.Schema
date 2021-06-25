@@ -1,0 +1,9 @@
+My.Vendor:Document.Simple:
+  superTypes:
+    Neos.Neos:Document: true
+  childNodes:
+    main:
+      type: Neos.Neos:ContentCollection
+      constraints:
+        nodeTypes:
+          Neos.Neos:Content: true

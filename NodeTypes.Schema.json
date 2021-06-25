@@ -1051,7 +1051,18 @@
                             "$ref": "#/definitions/position"
                         },
                         "type": {
-                            "type": "string"
+                            "type": "string",
+                            "anyOf": [
+                                {
+                                    "const": "Neos.Neos:ContentCollection"
+                                },
+                                {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            ]
                         },
                         "constraints": {
                             "type": "object",
