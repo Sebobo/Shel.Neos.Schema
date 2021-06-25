@@ -1007,15 +1007,22 @@
             "superTypes": {
                 "type": "object",
                 "additionalProperties": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": true
                 },
                 "$comment": "Provide the most commonly used supertypes for autocompletion",
                 "properties": {
                     "Neos.Neos:Content": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "default": true
                     },
                     "Neos.Neos:ContentCollection": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "Neos.Neos:Document": {
+                        "type": "boolean",
+                        "default": true
                     }
                 }
             },
