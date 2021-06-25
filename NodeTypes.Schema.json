@@ -34,6 +34,7 @@
                 "Neos.Neos:NodeTypes.Document:ui.label",
                 "Some label"
             ],
+            "default": "i18n",
             "anyOf": [
                 {
                     "const": "i18n"
