@@ -61,9 +61,25 @@ Add path mappings to the packages you work on. For example:
 
     DistributionPackages/*/Configuration/NodeTypes*.yaml
 
+### Visual Studio Code
+
+Install this plugin to enable JSON schema for YAML:
+https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml
+
+Open the `Command Palette` with `F1` or `Ctrl + Shift + P` in VSCode,
+then search for 'settings json' and add there the following snippet:
+
+```json
+{
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json": "DistributionPackages/*/Configuration/NodeTypes*.yaml"
+    }
+}
+```
+
 ### Other editors
 
-Visual Studio Code and [other editors](https://www.schemastore.org/json/) also support JSON schema. 
+[Other editors](https://www.schemastore.org/json/) also support JSON schema. 
 Instructions are easy to find with your favourite search engine.
 
 ### Schema variants
