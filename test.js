@@ -9,9 +9,24 @@ const ajv = new Ajv({
 // Add support for intellij html description
 ajv.addKeyword('x-intellij-html-description');
 
-const schema = JSON.parse(fs.readFileSync('./NodeTypes.Schema.json', { encoding: 'utf8', flag: 'r' }));
-
-const validate = ajv.compile(schema);
+const schemas = [
+    {
+        pattern: /NodeTypes.*\.yaml$/,
+        schemaFile: './NodeTypes.Schema.json',
+    },
+    {
+        pattern: /Version.*\.yaml$/,
+        schemaFile: './NodeMigration.Schema.json',
+    },
+].map(sd => {
+    const schema = JSON.parse(fs.readFileSync(sd.schemaFile, { encoding: 'utf8', flag: 'r' }));
+    const validate = ajv.compile(schema);
+    return {
+        ...sd,
+        schema,
+        validate,
+    };
+});
 
 const files = fs.readdirSync('./examples');
 
@@ -21,9 +36,15 @@ for (const file of files) {
     const fileContent = fs.readFileSync(`./examples/${file}`, { encoding: 'utf8', flag: 'r' });
     const data = yaml.load(fileContent);
 
-    const valid = validate(data);
+    const schema = schemas.find(sd => sd.pattern.test(file));
+    if (!schema) {
+        console.warn('Could not validate %s, no matching schema found', file);
+        continue;
+    }
+
+    const valid = schema.validate(data);
     if (!valid) {
-        console.error(validate.errors);
+        console.error(schema.validate.errors);
         hasError = true;
     }
 }

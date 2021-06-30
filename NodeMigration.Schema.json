@@ -1,0 +1,540 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeMigration.Schema.json",
+    "title": "Neos Node-Migration Schema",
+    "type": "object",
+    "definitions": {
+        "configuration": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "comments": {
+                    "description": "Description what this migration will do.",
+                    "type": "string"
+                },
+                "warnings": {
+                    "description": "If warnings are present, execution of the migration has to explicitly confirmed.",
+                    "type": "string"
+                },
+                "migration": {
+                    "description": "Transformations to be applied by this migration.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/migration"
+                    }
+                }
+            }
+        },
+        "migration": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "filters": {
+                    "description": "Conditions determining which nodes the transformations should be applied to.",
+                    "x-intellij-html-description": "<p>Conditions determining which nodes the transformations should be applied to.<br/><a href=\"https://neos.readthedocs.io/en/stable/References/NodeMigrations.html#filters-reference\">Reference of built-in filters</a></p>",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/filter"
+                    }
+                },
+                "transformations": {
+                    "description": "Transformations to be applied to the nodes matching the filters",
+                    "x-intellij-html-description": "<p>Transformations to be applied to the nodes matching the filters<br/><a href=\"https://neos.readthedocs.io/en/stable/References/NodeMigrations.html#transformations-reference\">Reference of built-in transformations</a></p>",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/transformation"
+                    }
+                }
+            }
+        },
+        "filter": {
+            "anyOf": [
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "not": {
+                                "enum": [
+                                    "DimensionValues",
+                                    "IsRemoved",
+                                    "NodeName",
+                                    "NodeType",
+                                    "PropertyNotEmpty",
+                                    "Workspace"
+                                ]
+                            }
+                        },
+                        "settings": {
+                            "type": [
+                                "array",
+                                "object"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "DimensionValues"
+                        },
+                        "settings": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "dimensionValues": {
+                                    "description": "The array of dimension values to filter for.",
+                                    "type": "array"
+                                },
+                                "filterForDefaultDimensionValues": {
+                                    "description": "Overrides the given dimensionValues with dimension defaults.",
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "IsRemoved"
+                        },
+                        "settings": {
+                            "type": "array"
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "NodeName"
+                        },
+                        "settings": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "nodeName": {
+                                    "description": "The value to compare the node name against, strict equality is checked",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "nodeName"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "NodeType"
+                        },
+                        "settings": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "nodeType": {
+                                    "description": "The node type name to match on.",
+                                    "type": "string"
+                                },
+                                "withSubTypes": {
+                                    "description": "Whether the filter should match also on all subtypes of the configured node type. Note: This can only be used with node types still available in the system!",
+                                    "type": "boolean"
+                                },
+                                "exclude": {
+                                    "description": "Whether the filter should exclude the given NodeType instead of including only this node type.",
+                                    "type": "boolean"
+                                }
+                            },
+                            "required": [
+                                "nodeType"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "PropertyNotEmpty"
+                        },
+                        "settings": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "propertyName": {
+                                    "description": "The property name to be checked for non-empty value.",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "propertyName"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "Workspace"
+                        },
+                        "settings": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "workspaceName": {
+                                    "description": "The workspace name to match on.",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "workspaceName"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "transformation": {
+            "anyOf": [
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "not": {
+                                "enum": [
+                                    "AddDimensions",
+                                    "ChangeNodeType",
+                                    "ChangePropertyValue",
+                                    "RemoveNode",
+                                    "RemoveProperty",
+                                    "RenameDimensions",
+                                    "RenameNode",
+                                    "RenameProperty",
+                                    "SetDimensions",
+                                    "StripTagsOnProperty"
+                                ]
+                            }
+                        },
+                        "settings": {
+                            "type": [
+                                "array",
+                                "object"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "AddDimensions"
+                        },
+                        "settings": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "dimensionValues": {
+                                    "description": "An array of dimension names and values to set.",
+                                    "type": "array"
+                                },
+                                "addDefaultDimensionValues": {
+                                    "description": "Whether to add the default dimension values for all dimensions that were not given.",
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "AddNewProperty"
+                        },
+                        "settings": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "newPropertyName": {
+                                    "description": "The name of the new property to be added.",
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "description": "Property value to be set."
+                                }
+                            },
+                            "required": [
+                                "newPropertyName",
+                                "value"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "ChangeNodeType"
+                        },
+                        "settings": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "newType": {
+                                    "description": "The new Node Type to use as a string.",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "newType"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "ChangePropertyValue"
+                        },
+                        "settings": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "property": {
+                                    "description": "The name of the property to change.",
+                                    "type": "string"
+                                },
+                                "newValue": {
+                                    "description": "New property value to be set.\n\nThe value of the option currentValuePlaceholder (defaults to “{current}”) will be used to include the current property value into the new value.",
+                                    "x-intellij-html-description": "<p>New property value to be set.\n\nThe value of the option <code>currentValuePlaceholder</code> (defaults to “{current}”) will be used to include the current property value into the new value.</p>",
+                                    "type": "string"
+                                },
+                                "search": {
+                                    "description": "Search string to replace in current property value.",
+                                    "type": "string"
+                                },
+                                "replace": {
+                                    "description": "Replacement for the search string.",
+                                    "type": "string"
+                                },
+                                "currentValuePlaceholder": {
+                                    "description": "The value of this option (defaults to {current}) will be used to include the current property value into the new value.",
+                                    "x-intellij-html-description": "<p>The value of this option (defaults to <code>{current}</code>) will be used to include the current property value into the new value.</p>",
+                                    "type": "string"
+                                }
+                            },
+                            "oneOf": [
+                                {
+                                    "required": [
+                                        "property",
+                                        "newValue"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "property",
+                                        "search",
+                                        "replace"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "RemoveNode"
+                        },
+                        "settings": {
+                            "type": "array"
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "RemoveProperty"
+                        },
+                        "settings": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "property": {
+                                    "description": "The name of the property to be removed.",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "property"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "RenameDimension"
+                        },
+                        "settings": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "newDimensionName": {
+                                    "description": "The new name for the dimension.",
+                                    "type": "string"
+                                },
+                                "oldDimensionName": {
+                                    "description": "The old name of the dimension to rename.",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "newDimensionName",
+                                "oldDimensionName"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "RenameNode"
+                        },
+                        "settings": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "newName": {
+                                    "description": "The new name for the node.",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "newName"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "RenameProperty"
+                        },
+                        "settings": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "from": {
+                                    "description": "The name of the property to change.",
+                                    "type": "string"
+                                },
+                                "to": {
+                                    "description": "The new name for the property to change.",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "from",
+                                "to"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "SetDimensions"
+                        },
+                        "settings": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "dimensionValues": {
+                                    "description": "An array of dimension names and values to set.",
+                                    "type": "array"
+                                },
+                                "addDefaultDimensionValues": {
+                                    "description": "Whether to add the default dimension values for all dimensions that were not given.",
+                                    "type": "boolean"
+                                }
+                            },
+                            "required": [
+                                "dimensionValues"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "type": {
+                            "const": "StripTagsOnProperty"
+                        },
+                        "settings": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "property": {
+                                    "description": "The name of the property to work on.",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "property"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "additionalProperties": false,
+    "properties": {
+        "up": {
+            "description": "Transformations to be applied when executing the migration",
+            "$ref": "#/definitions/configuration"
+        },
+        "down": {
+            "description": "Transformations to be applied when rolling back the migration",
+            "$ref": "#/definitions/configuration"
+        }
+    },
+    "required": [
+        "up",
+        "down"
+    ]
+}
