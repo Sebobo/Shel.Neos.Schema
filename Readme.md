@@ -1,13 +1,13 @@
-# JSON schema for Neos CMS nodetypes
+# JSON schema for Neos CMS nodetypes & node migrations
 
 [![Tests](https://github.com/Sebobo/Shel.Neos.Schema/actions/workflows/tests.yml/badge.svg)](https://github.com/Sebobo/Shel.Neos.Schema/actions/workflows/tests.yml)
 
-This repository contains a [JSON schema](https://json-schema.org), that can be used in PHPStorm or VSCode
-to get 
+This repository contains [JSON schema](https://json-schema.org) definitions, that can be used in PHPStorm or VSCode
+to get the following features for `NodeTypes.*.yaml` and node migration `Version*.yaml` files: 
 
 * autocompletion 
 * typehints 
-* validation of Neos CMS nodetypes files
+* validation
 * inline documentation
 
 ![Example usage in PHPStorm](neos-schema-example.gif)
@@ -20,15 +20,14 @@ With a bit of community effort we can upgrade them, put them in the core, replac
 and make the schemas officially available on https://www.schemastore.org/json/.
 The schemastore allows your IDE to automatically download the one your need.
 
-## Features:
+## Features for Neos nodetypes:
 
 ### Autocompletion
 
 In addition to usual fields there are also conditional schema definitions for the following properties:
 
-* `editor` (due to a [bug](https://ajv.js.org/) in IntelliJ, autocompletion doesn't show the matching `editorOptions` but validation works)
+* `editor` (due to a [bug](https://youtrack.jetbrains.com/issue/WEB-37901) in IntelliJ, autocompletion doesn't show the matching `editorOptions` but validation works)
 * `validation`
-
 
 ### Typehints
 
@@ -45,9 +44,21 @@ This is still work-in-progress and only a few entries properties have full docum
 Feel free to open a PR to add more.
 We support the fields `title`, `description` and `x-intellij-html-description` for html docs.
 
+## Features for Neos nodetypes:
+
+Autocompletion, typehints, validation and inline docs are available also for node migrations files.
+Custom transformations & filters and their options are of course not included.
+
 ## How to use
 
 ### PHPStorm / IntelliJ IDEA 
+
+#### Simple option
+
+Install the [Neos plugin](https://plugins.jetbrains.com/plugin/9362-neos-support), it will automatically activate the
+latest nodetypes schema from this repository.
+
+#### Manual configuration (nodetypes)
 
 Follow the [official instruction](https://www.jetbrains.com/help/phpstorm/json.html#ws_json_schema_add_custom) and add the url: 
 
@@ -61,6 +72,20 @@ Add path mappings to the packages you work on. For example:
 
     DistributionPackages/*/Configuration/NodeTypes*.yaml
 
+#### Manual configuration (migrations)
+
+See above and add the url: 
+
+    https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeMigration.Schema.json
+
+Make sure there is no space at the end of the url when pasting it into your IDE or the Schema will not validate.
+
+Set `Schema Version` to `JSON Schema version 7`.
+
+Add path mappings to the packages you work on. For example:
+
+    DistributionPackages/*/Migrations/ContentRepository/Version*.yaml
+
 ### Visual Studio Code
 
 Install this plugin to enable JSON schema for YAML:
@@ -72,7 +97,8 @@ then search for 'settings json' and add there the following snippet:
 ```json
 {
     "yaml.schemas": {
-        "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json": "DistributionPackages/*/Configuration/NodeTypes*.yaml"
+        "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json": "DistributionPackages/*/Configuration/NodeTypes*.yaml",
+        "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeMigration.Schema.json": "DistributionPackages/*/Migrations/ContentRepository/Version*.yaml"
     }
 }
 ```
@@ -84,7 +110,7 @@ Instructions are easy to find with your favourite search engine.
 
 ### Schema variants
 
-Certain declarations in a NodeTypes.yaml file are valid but not considered as "best practise".
+Certain declarations in a `NodeTypes.*.yaml` file are valid but not considered as "best practise".
 The default schema mentioned in the instructions above will not enforce those.
 
 #### Strict schema
@@ -101,11 +127,10 @@ Implemented additional checks:
 
 ### I get duplicate results for autocompletion
 
-This happens when you have the Neos plugin installed in an IntelliJ IDE. 
-The plugin also provides some basic autocompletion hints.
-
-The developer of the plugin plans to use this schema in the future instead.
-Then the duplicates will disappear.
+This happens when you have an older version of the Neos plugin installed in an IntelliJ IDE and you manually set up the
+schemas in your IDE. 
+The plugin also provided some basic autocompletion hints in older versions than 1.7. After that it referenced the 
+schema in this repository.
 
 ## Contribution
 
