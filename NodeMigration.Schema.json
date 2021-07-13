@@ -342,22 +342,7 @@
                                     "x-intellij-html-description": "<p>The value of this option (defaults to <code>{current}</code>) will be used to include the current property value into the new value.</p>",
                                     "type": "string"
                                 }
-                            },
-                            "oneOf": [
-                                {
-                                    "required": [
-                                        "property",
-                                        "newValue"
-                                    ]
-                                },
-                                {
-                                    "required": [
-                                        "property",
-                                        "search",
-                                        "replace"
-                                    ]
-                                }
-                            ]
+                            }
                         }
                     }
                 },

@@ -30,6 +30,7 @@ up:
           type: 'ChangePropertyValue'
           settings:
             property: 'foo'
+            newValue: 'prefix {current}'
             search: 'o'
             replace: 'u'
         -
