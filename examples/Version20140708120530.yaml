@@ -18,6 +18,25 @@ up:
         -
           type: 'MyCustom'
           settings: []
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'My.Vendor:NodeType'
+            withSubTypes: true
+      transformations:
+        -
+          type: 'ChangePropertyValue'
+          settings:
+            property: 'foo'
+            search: 'o'
+            replace: 'u'
+        -
+          type: 'ChangePropertyValue'
+          settings:
+            property: 'foo'
+            newValue: '{current}'
 
 down:
   comments: 'No down migration available'
