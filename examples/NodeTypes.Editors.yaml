@@ -31,6 +31,18 @@ My.Vendor:Content.Editors:
             readonly: false
             placeholder: 'ClientEval: node.properties.titleOverride || node.properties.title'
 
+    richText:
+      ui:
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/RichTextEditor'
+          editorOptions:
+            placeholder: '<p>placeholder</p>'
+            autoparagraph: true
+            linking:
+              anchor: true
+            formatting:
+              strong: true
+
     textField:
       type: string
       ui:
