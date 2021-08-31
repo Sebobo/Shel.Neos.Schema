@@ -17,6 +17,12 @@ My.Vendor:Content.Text:
               a: true
             linking:
               anchor: true
+              nodeTypes: ['Neos.Neos:Document']
+              startingPoint: '/sites'
+              placeholder: i18n
+              disabled: false
+              assets: false
+              nodes: true
             placeholder: i18n
             autoparagraph: false
 

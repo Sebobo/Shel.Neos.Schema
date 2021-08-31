@@ -477,42 +477,7 @@
                             "const": "Neos.Neos/Inspector/Editors/LinkEditor"
                         },
                         "editorOptions": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "nodeTypes": {
-                                    "oneOf": [
-                                        {
-                                            "type": "string"
-                                        },
-                                        {
-                                            "type": "array",
-                                            "uniqueItems": true,
-                                            "items": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    ]
-                                },
-                                "startingPoint": {
-                                    "type": "string"
-                                },
-                                "placeholder": {
-                                    "$ref": "#/definitions/label"
-                                },
-                                "disabled": {
-                                    "type": "boolean",
-                                    "default": false
-                                },
-                                "assets": {
-                                    "type": "boolean",
-                                    "default": true
-                                },
-                                "nodes": {
-                                    "type": "boolean",
-                                    "default": true
-                                }
-                            }
+                            "$ref": "#/definitions/linkEditorOptions"
                         }
                     }
                 },
@@ -639,24 +604,29 @@
                     "$ref": "#/definitions/label"
                 },
                 "linking": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "boolean"
-                    },
-                    "properties": {
-                        "anchor": {
-                            "type": "boolean"
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "anchor": {
+                                    "type": "boolean"
+                                },
+                                "title": {
+                                    "type": "boolean"
+                                },
+                                "relNoFollow": {
+                                    "type": "boolean"
+                                },
+                                "targetBlank": {
+                                    "type": "boolean"
+                                }
+                            }
                         },
-                        "title": {
-                            "type": "boolean"
-                        },
-                        "relNoFollow": {
-                            "type": "boolean"
-                        },
-                        "targetBlank": {
-                            "type": "boolean"
+                        {
+                            "$ref": "#/definitions/linkEditorOptions"
                         }
-                    }
+                    ]
                 },
                 "formatting": {
                     "type": "object",
@@ -740,6 +710,43 @@
                             "type": "boolean"
                         }
                     }
+                }
+            }
+        },
+        "linkEditorOptions": {
+            "type": "object",
+            "properties": {
+                "nodeTypes": {
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "startingPoint": {
+                    "type": "string"
+                },
+                "placeholder": {
+                    "$ref": "#/definitions/label"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "assets": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "nodes": {
+                    "type": "boolean",
+                    "default": true
                 }
             }
         },
