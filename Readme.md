@@ -49,6 +49,11 @@ We support the fields `title`, `description` and `x-intellij-html-description` f
 Autocompletion, typehints, validation and inline docs are available also for node migrations files.
 Custom transformations & filters and their options are of course not included.
 
+## Features for Neos cache configuration:
+
+Autocompletion and descriptions for default cache frontends, backends and their options based on [the documentation](https://flowframework.readthedocs.io/en/stable/TheDefinitiveGuide/PartIII/Caching.html).
+Custom cache implementations and their options are of course not included.
+
 ## How to use
 
 ### PHPStorm / IntelliJ IDEA 
@@ -86,6 +91,20 @@ Add path mappings to the packages you work on. For example:
 
     DistributionPackages/*/Migrations/ContentRepository/Version*.yaml
 
+#### Manual configuration (caches)
+
+See above and add the url: 
+
+    https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/Caches.Schema.json
+
+Make sure there is no space at the end of the url when pasting it into your IDE or the Schema will not validate.
+
+Set `Schema Version` to `JSON Schema version 7`.
+
+Add path mappings to the packages you work on. For example:
+
+    DistributionPackages/*/Configuration/Caches*.yaml
+
 ### Visual Studio Code
 
 Install this plugin to enable JSON schema for YAML:
@@ -98,7 +117,8 @@ then search for 'settings json' and add there the following snippet:
 {
     "yaml.schemas": {
         "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json": "DistributionPackages/*/Configuration/NodeTypes*.yaml",
-        "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeMigration.Schema.json": "DistributionPackages/*/Migrations/ContentRepository/Version*.yaml"
+        "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeMigration.Schema.json": "DistributionPackages/*/Migrations/ContentRepository/Version*.yaml",
+        "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/Caches.Schema.json": "DistributionPackages/*/Configuration/Caches*.yaml"
     }
 }
 ```
