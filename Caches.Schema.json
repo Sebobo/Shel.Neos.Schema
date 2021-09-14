@@ -107,8 +107,8 @@
                                         "/tmp/my-cache-directory/"
                                     ]
                                 },
-                                "defaultLifeTime": {
-                                    "$ref": "#/definitions/defaultLifeTime"
+                                "defaultLifetime": {
+                                    "$ref": "#/definitions/defaultLifetime"
                                 }
                             }
                         }
@@ -140,8 +140,8 @@
                                     "type": "string",
                                     "description": "Password to use for the database connection."
                                 },
-                                "defaultLifeTime": {
-                                    "$ref": "#/definitions/defaultLifeTime"
+                                "defaultLifetime": {
+                                    "$ref": "#/definitions/defaultLifetime"
                                 }
                             },
                             "required": [
@@ -185,8 +185,8 @@
                                     "minimum": 0,
                                     "maximum": 9
                                 },
-                                "defaultLifeTime": {
-                                    "$ref": "#/definitions/defaultLifeTime"
+                                "defaultLifetime": {
+                                    "$ref": "#/definitions/defaultLifetime"
                                 }
                             }
                         }
@@ -211,8 +211,8 @@
                                     "description": "Enable memcached internal data compression. Can be used to reduce memcached memory consumption but adds additional compression / decompression CPU overhead on the according memcached servers.",
                                     "default": false
                                 },
-                                "defaultLifeTime": {
-                                    "$ref": "#/definitions/defaultLifeTime"
+                                "defaultLifetime": {
+                                    "$ref": "#/definitions/defaultLifetime"
                                 }
                             },
                             "required": [
@@ -288,8 +288,8 @@
                                     "description": "Switch on debug mode which will throw any errors happening in sub backends. Use this in development to make sure everything works as expected.",
                                     "default": false
                                 },
-                                "defaultLifeTime": {
-                                    "$ref": "#/definitions/defaultLifeTime"
+                                "defaultLifetime": {
+                                    "$ref": "#/definitions/defaultLifetime"
                                 }
                             }
                         }
@@ -297,7 +297,7 @@
                 }
             ]
         },
-        "defaultLifeTime": {
+        "defaultLifetime": {
             "type": "integer",
             "default": 3600,
             "description": "Default lifetime in seconds of a cache entry if it is not specified for a specific entry on set()"
