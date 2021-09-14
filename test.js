@@ -15,6 +15,10 @@ const schemas = [
         schemaFile: './NodeTypes.Schema.json',
     },
     {
+        pattern: /Caches.*\.yaml$/,
+        schemaFile: './Caches.Schema.json',
+    },
+    {
         pattern: /Version.*\.yaml$/,
         schemaFile: './NodeMigration.Schema.json',
     },

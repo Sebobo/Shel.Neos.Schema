@@ -1,0 +1,306 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/Caches.Schema.json",
+    "title": "Neos Caching Configuration Schema",
+    "type": "object",
+    "additionalProperties": {
+        "$ref": "#/definitions/cache"
+    },
+    "definitions": {
+        "cache": {
+            "type": "object",
+            "properties": {
+                "frontend": {
+                    "$ref": "#/definitions/frontend"
+                },
+                "persistent": {
+                    "type": "boolean"
+                }
+            },
+            "$ref": "#/definitions/backendWithOptions"
+        },
+        "frontend": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "not": {
+                        "enum": [
+                            "Neos\\Cache\\Frontend\\StringFrontend",
+                            "Neos\\Cache\\Frontend\\VariableFrontend",
+                            "Neos\\Cache\\Frontend\\PhpFrontend",
+                            "Neos\\Cache\\Frontend\\PhpCapableBackendInterface"
+                        ]
+                    }
+                },
+                {
+                    "enum": [
+                        "Neos\\Cache\\Frontend\\StringFrontend",
+                        "Neos\\Cache\\Frontend\\VariableFrontend",
+                        "Neos\\Cache\\Frontend\\PhpFrontend",
+                        "Neos\\Cache\\Frontend\\PhpCapableBackendInterface"
+                    ]
+                }
+            ]
+        },
+        "backendWithOptions": {
+            "anyOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "backend": {
+                            "type": "string",
+                            "description": "The qualified classname of the backend implementation",
+                            "not": {
+                                "enum": [
+                                    "Neos\\Cache\\Backend\\SimpleFileBackend",
+                                    "Neos\\Cache\\Backend\\FileBackend",
+                                    "Neos\\Cache\\Backend\\PdoBackend",
+                                    "Neos\\Cache\\Backend\\RedisBackend",
+                                    "Neos\\Cache\\Backend\\MemcachedBackend",
+                                    "Neos\\Cache\\Backend\\ApcuBackend",
+                                    "Neos\\Cache\\Backend\\TransientMemoryBackend",
+                                    "Neos\\Cache\\Backend\\NullBackend",
+                                    "Neos\\Cache\\Backend\\MultiBackend",
+                                    "Neos\\Cache\\Backend\\TaggableMultiBackend"
+                                ]
+                            }
+                        },
+                        "backendOptions": {
+                            "type": ["object", "array"],
+                            "description": "Options passed to the backend implementation"
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "backend": {
+                            "const": "Neos\\Cache\\Backend\\SimpleFileBackend"
+                        },
+                        "backendOptions": {
+                            "type": "object",
+                            "properties": {
+                                "cacheDirectory": {
+                                    "type": "string",
+                                    "description": "Full path leading to a custom cache directory.",
+                                    "examples": [
+                                        "/tmp/my-cache-directory/"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "backend": {
+                            "const": "Neos\\Cache\\Backend\\FileBackend"
+                        },
+                        "backendOptions": {
+                            "type": "object",
+                            "properties": {
+                                "cacheDirectory": {
+                                    "type": "string",
+                                    "description": "Full path leading to a custom cache directory.",
+                                    "examples": [
+                                        "/tmp/my-cache-directory/"
+                                    ]
+                                },
+                                "defaultLifeTime": {
+                                    "$ref": "#/definitions/defaultLifeTime"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "backend": {
+                            "const": "Neos\\Cache\\Backend\\PdoBackend"
+                        },
+                        "backendOptions": {
+                            "type": "object",
+                            "properties": {
+                                "dataSourceName": {
+                                    "type": "string",
+                                    "description": "Data source name for connecting to the database.",
+                                    "examples": [
+                                        "mysql:host=localhost;dbname=test;charset=utf8mb4",
+                                        "sqlite:/path/to/sqlite.db",
+                                        "sqlite:memory"
+                                    ]
+                                },
+                                "username": {
+                                    "type": "string",
+                                    "description": "Username to use for the database connection."
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "description": "Password to use for the database connection."
+                                },
+                                "defaultLifeTime": {
+                                    "$ref": "#/definitions/defaultLifeTime"
+                                }
+                            },
+                            "required": [
+                                "dataSourceName"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "backend": {
+                            "const": "Neos\\Cache\\Backend\\RedisBackend"
+                        },
+                        "backendOptions": {
+                            "type": "object",
+                            "properties": {
+                                "hostname": {
+                                    "type": "string",
+                                    "description": "IP address or name of redis server to connect to.",
+                                    "default": "127.0.0.1"
+                                },
+                                "port": {
+                                    "type": "integer",
+                                    "description": "Port of the Redis server.",
+                                    "default": 6379
+                                },
+                                "database": {
+                                    "type": "integer",
+                                    "description": "Number of the database to store entries. Each cache should use its own database, otherwise all caches sharing a database are flushed if the flush operation is issued to one of them. Database numbers 0 and 1 are used and flushed by the core unit tests and should not be used if possible.",
+                                    "default": 0
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "description": "Password used to connect to the redis instance if the redis server needs authentication. Warning: The password is sent to the redis server in plain text."
+                                },
+                                "compressionLevel": {
+                                    "type": "integer",
+                                    "description": "Set gzip compression level to a specific value.",
+                                    "default": 0,
+                                    "minimum": 0,
+                                    "maximum": 9
+                                },
+                                "defaultLifeTime": {
+                                    "$ref": "#/definitions/defaultLifeTime"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "backend": {
+                            "const": "Neos\\Cache\\Backend\\MemcachedBackend"
+                        },
+                        "backendOptions": {
+                            "type": "object",
+                            "properties": {
+                                "servers": {
+                                    "type": "array",
+                                    "description": "Array of used memcached servers, at least one server must be defined. Each server definition is a string, allowed syntaxes:\n\nhost\n  TCP connect to host on memcached default port (usually 11211, defined by PHP ini variable memcache.default_port\n\nhost:port\n  TCP connect to host on port\n\ntcp://hostname:port\n  Same as above\n\nunix:///path/to/memcached.sock\n  Connect to memcached server using unix sockets",
+                                    "x-intellij-html-description": "<p>Array of used memcached servers, at least one server must be defined. Each server definition is a string, allowed syntaxes:<ul><li><strong>hosty</strong><br>TCP connect to host on memcached default port (usually 11211, defined by PHP ini variable memcache.default_port</li><li><strong>host:port</strong><br>TCP connect to host on port</li><li><strong>tcp://hostname:port</strong><br>Same as above</li><li><strong>unix:///path/to/memcached.sock</strong><br>Connect to memcached server using unix sockets</li></ul></p>"
+                                },
+                                "compression": {
+                                    "type": "boolean",
+                                    "description": "Enable memcached internal data compression. Can be used to reduce memcached memory consumption but adds additional compression / decompression CPU overhead on the according memcached servers.",
+                                    "default": false
+                                },
+                                "defaultLifeTime": {
+                                    "$ref": "#/definitions/defaultLifeTime"
+                                }
+                            },
+                            "required": [
+                                "servers"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "backend": {
+                            "const": "Neos\\Cache\\Backend\\ApcuBackend"
+                        },
+                        "backendOptions": {
+                            "type": ["object", "array"]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "backend": {
+                            "const": "Neos\\Cache\\Backend\\TransientMemoryBackend"
+                        },
+                        "backendOptions": {
+                            "type": ["object", "array"]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "backend": {
+                            "const": "Neos\\Cache\\Backend\\NullBackend"
+                        },
+                        "backendOptions": {
+                            "type": ["object", "array"]
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "backend": {
+                            "oneOf": [
+                                {
+                                    "const": "Neos\\Cache\\Backend\\MultiBackend"
+                                },
+                                {
+                                    "const": "Neos\\Cache\\Backend\\TaggableMultiBackend"
+                                }
+                            ]
+                        },
+                        "backendOptions": {
+                            "type": "object",
+                            "properties": {
+                                "setInAllBackends": {
+                                    "type": "boolean",
+                                    "description": "Should values given to the backend be replicated into all configured and available backends? Generally that is desirable for fallback purposes, but to avoid too much duplication at the cost of performance on fallbacks this can be disabled.",
+                                    "default": true
+                                },
+                                "backendConfigurations": {
+                                    "type": "array",
+                                    "description": "A list of backends to be used in order of appearance. Each entry in that list should have the keys “backend” and “backendOptions” just as a top level backend configuration.",
+                                    "items": {
+                                        "$ref": "#/definitions/backendWithOptions"
+                                    },
+                                    "default": []
+                                },
+                                "debug": {
+                                    "type": "boolean",
+                                    "description": "Switch on debug mode which will throw any errors happening in sub backends. Use this in development to make sure everything works as expected.",
+                                    "default": false
+                                },
+                                "defaultLifeTime": {
+                                    "$ref": "#/definitions/defaultLifeTime"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "defaultLifeTime": {
+            "type": "integer",
+            "default": 3600,
+            "description": "Default lifetime in seconds of a cache entry if it is not specified for a specific entry on set()"
+        }
+    }
+}

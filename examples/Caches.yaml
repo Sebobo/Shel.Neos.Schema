@@ -1,0 +1,17 @@
+Neos_Fusion_Content:
+  persistent: false
+  frontend: Neos\Cache\Frontend\VariableFrontend
+  backend: Neos\Cache\Backend\SimpleFileBackend
+  backendOptions:
+    cacheDirectory: /tmp/my-cache-directory/
+
+My_Fallback_Cache:
+  backend: Neos\Cache\Backend\MultiBackend
+  backendOptions:
+    backendConfigurations:
+      - backend: Neos\Cache\Backend\RedisBackend
+        backendOptions:
+          database: 1
+      - backend: Neos\Cache\Backend\PdoBackend
+        backendOptions:
+          dataSourceName: "sqlite:memory"
