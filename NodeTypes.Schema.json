@@ -230,17 +230,22 @@
                                 "placeholder": {
                                     "$ref": "#/definitions/label"
                                 },
-                                "multiple": {
-                                    "type": "boolean",
-                                    "default": true
-                                },
-                                "imagesOnly": {
-                                    "type": "boolean",
-                                    "default": false
-                                },
                                 "disabled": {
                                     "type": "boolean",
                                     "default": false
+                                },
+                                "constraints": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "mediaTypes": {
+                                            "type": "array",
+                                            "uniqueItems": true,
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
                                 },
                                 "features": {
                                     "type": "object",

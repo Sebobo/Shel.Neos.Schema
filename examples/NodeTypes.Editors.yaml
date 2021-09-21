@@ -99,8 +99,6 @@ My.Vendor:Content.Editors:
           editor: 'Neos.Neos/Inspector/Editors/AssetEditor'
           editorOptions:
             placeholder: i18n
-            multiple: false
-            imagesOnly: false
             disabled: false
             features:
               upload: true
@@ -113,8 +111,6 @@ My.Vendor:Content.Editors:
           editor: 'Neos.Neos/Inspector/Editors/AssetEditor'
           editorOptions:
             placeholder: i18n
-            multiple: true
-            imagesOnly: false
             disabled: false
             features:
               upload: true
