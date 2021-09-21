@@ -3,7 +3,7 @@
 [![Tests](https://github.com/Sebobo/Shel.Neos.Schema/actions/workflows/tests.yml/badge.svg)](https://github.com/Sebobo/Shel.Neos.Schema/actions/workflows/tests.yml)
 
 This repository contains [JSON schema](https://json-schema.org) definitions, that can be used in PHPStorm or VSCode
-to get the following features for `NodeTypes.*.yaml` and node migration `Version*.yaml` files: 
+to get the following features for `NodeTypes.*.yaml`, `Caches.yaml` and node migration `Version*.yaml` files: 
 
 * autocompletion 
 * typehints 
@@ -44,7 +44,7 @@ This is still work-in-progress and only a few entries properties have full docum
 Feel free to open a PR to add more.
 We support the fields `title`, `description` and `x-intellij-html-description` for html docs.
 
-## Features for Neos nodetypes:
+## Features for Neos node migrations:
 
 Autocompletion, typehints, validation and inline docs are available also for node migrations files.
 Custom transformations & filters and their options are of course not included.
