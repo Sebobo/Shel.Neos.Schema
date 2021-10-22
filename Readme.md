@@ -116,7 +116,7 @@ then search for 'settings json' and add there the following snippet:
 ```json
 {
     "yaml.schemas": {
-        "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json": "DistributionPackages/*/Configuration/NodeTypes*.yaml",
+        "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json": ["DistributionPackages/*/Configuration/NodeTypes*.yaml", "DistributionPackages/*/NodeTypes/**/*.yaml"],
         "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeMigration.Schema.json": "DistributionPackages/*/Migrations/ContentRepository/Version*.yaml",
         "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/Caches.Schema.json": "DistributionPackages/*/Configuration/Caches*.yaml"
     }
