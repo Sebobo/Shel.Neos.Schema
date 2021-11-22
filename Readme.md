@@ -54,6 +54,10 @@ Custom transformations & filters and their options are of course not included.
 Autocompletion and descriptions for default cache frontends, backends and their options based on [the documentation](https://flowframework.readthedocs.io/en/stable/TheDefinitiveGuide/PartIII/Caching.html).
 Custom cache implementations and their options are of course not included.
 
+## Features for Neos routing configuration:
+
+Autocompletion and descriptions for routing configuration based on [the documentation](https://flowframework.readthedocs.io/en/stable/TheDefinitiveGuide/PartIII/Routing.html).
+
 ## How to use
 
 ### PHPStorm / IntelliJ IDEA 
@@ -105,6 +109,20 @@ Add path mappings to the packages you work on. For example:
 
     DistributionPackages/*/Configuration/Caches*.yaml
 
+#### Manual configuration (routing)
+
+See above and add the url: 
+
+    https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/Routes.Schema.json
+
+Make sure there is no space at the end of the url when pasting it into your IDE or the Schema will not validate.
+
+Set `Schema Version` to `JSON Schema version 7`.
+
+Add path mappings to the packages you work on. For example:
+
+    DistributionPackages/*/Configuration/Routes*.yaml
+
 ### Visual Studio Code
 
 Install this plugin to enable JSON schema for YAML:
@@ -118,7 +136,8 @@ then search for 'settings json' and add there the following snippet:
     "yaml.schemas": {
         "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json": ["DistributionPackages/*/Configuration/NodeTypes*.yaml", "DistributionPackages/*/NodeTypes/**/*.yaml"],
         "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeMigration.Schema.json": "DistributionPackages/*/Migrations/ContentRepository/Version*.yaml",
-        "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/Caches.Schema.json": "DistributionPackages/*/Configuration/Caches*.yaml"
+        "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/Caches.Schema.json": "DistributionPackages/*/Configuration/Caches*.yaml",
+        "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/Routes.Schema.json": "DistributionPackages/*/Configuration/Routes*.yaml"
     }
 }
 ```

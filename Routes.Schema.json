@@ -1,0 +1,167 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/Routes.Schema.json",
+    "title": "Flow Routes Schema",
+    "definitions": {
+        "httpMethod": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "not": {
+                        "enum": ["GET","POST","PUT","DELETE","OPTIONS"]
+                    }
+                },
+                {
+                    "enum": ["GET","POST","PUT","DELETE","OPTIONS"]
+                }
+            ]
+        },
+        "route": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "uriPattern": {
+                    "type": "string",
+                    "description": "The path to the designated action without leading /.\n\nOptional parts can be enclosed in parentheses. No two optional parts may follow each other.\n\nDynamic arguments can be enclosed in braces.\n\nVariables can be enclosed in angled brackets.",
+                    "examples": [
+                        "my/demo",
+                        "my/demo(/{@action}.html)",
+                        "products/list/{sortOrder}.{@format}",
+                        "demo/<DemoSubroutes>"
+                    ],
+                    "pattern": "^(?!/).*"
+                },
+                "defaults": {
+                    "type": "object",
+                    "description": "Values that are not (necessarily) set in the uriPattern, e.g. controller name, package and action.\n\nInternal properties are prefixed with '@' (e.g. '@action').",
+                    "properties": {
+                        "@package": {
+                            "type": "string",
+                            "description": "The package key of the controller for that route",
+                            "pattern": "^[a-zA-Z0-9_]+(\\.[a-zA-Z0-9_]+)*$"
+                        },
+                        "@subpackage": {
+                            "type": "string",
+                            "description": "A subpackage within the given @package",
+                            "pattern": "^[a-zA-Z0-9_]+(\\\\[a-zA-Z0-9_]+)*$"
+                        },
+                        "@controller": {
+                            "type": "string",
+                            "description": "Name of the controller to handle the request without the 'Controller' suffix"
+                        },
+                        "@action": {
+                            "type": "string",
+                            "description": "Name of the action to handle the request without the 'Action' suffix"
+                        },
+                        "@format": {
+                            "type": "string",
+                            "description": "Request format",
+                            "examples": [
+                                "html",
+                                "json"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "routeParts": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "handler": {
+                                        "type": "string",
+                                        "description": "Name of the class to handle this route path, implementing the RoutePartInterface"
+                                    },
+                                    "options": {
+                                        "type": "object",
+                                        "description": "Options passed to the route part handler"
+                                    },
+                                    "toLowerCase": {
+                                        "type": "boolean",
+                                        "description": "Can be used to override the route-level toLowerCase option for the current route part."
+                                    }
+                                },
+                                "required": ["handler"],
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "objectType": {
+                                        "type": "string",
+                                        "description": "Name of a class the route part should relate to"
+                                    },
+                                    "uriPattern": {
+                                        "type": "string",
+                                        "description": "Determines how the route part is derived from (possibly multiple properties of) the object",
+                                        "examples": [
+                                            "{category.title}/{name}",
+                                            "{creationDate:m-Y}"
+                                        ]
+                                    },
+                                    "toLowerCase": {
+                                        "type": "boolean",
+                                        "description": "Can be used to override the route-level toLowerCase option for the current route part."
+                                    }
+                                },
+                                "required": ["objectType"],
+                                "additionalProperties": false
+                            }
+                        ]
+                    }
+                },
+                "subRoutes": {
+                    "type": "object",
+                    "description": "You can use the subroutes in your route definition like 'demo/<ExampleSubroutes>' with 'ExampleSubroutes' being an entry in the routes 'subRoutes'",
+                    "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                            "package": {
+                                "type": "string",
+                                "description": "The name of the package to load additional routes from"
+                            },
+                            "suffix": {
+                                "type": "string",
+                                "description": "A suffix of 'Foo' will load the file 'Routes.Foo.yaml' from the specified package"
+                            },
+                            "variables": {
+                                "type": "object"
+                            }
+                        },
+                        "required": [
+                            "package"
+                        ]
+                    }
+                },
+                "toLowerCase": {
+                    "type": "boolean",
+                    "description": "By default URIs are lower-cased. This can be disabled for the complete URI or separate route parts."
+                },
+                "appendExceedingArguments": {
+                    "type": "boolean",
+                    "description": "By default arguments that are neither in the uriPattern nor the defaults object will not be appended as query string. This setting is only relevant when creating URIs with a URI builder."
+                },
+                "httpMethods": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/httpMethod",
+                        "uniqueItems": true
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "uriPattern"
+            ]
+        }
+    },
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/route"
+    }
+}
