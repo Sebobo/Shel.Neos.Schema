@@ -1,0 +1,51 @@
+-
+  name: 'Product'
+  uriPattern: 'products/<EntitySubroutes>'
+  defaults:
+    '@package':    'My.Package'
+    '@subpackage': 'Some\Package'
+  subRoutes:
+    'EntitySubroutes':
+      package: 'My.Package'
+      suffix:  'Entity'
+      variables:
+        'entityName': 'product'
+
+-
+  name: 'Category'
+  uriPattern: 'categories/<EntitySubroutes>'
+  defaults:
+    '@package':    'My.Package'
+    '@controller': 'Category'
+  subRoutes:
+    'EntitySubroutes':
+      package: 'My.Package'
+      suffix:  'Entity'
+      variables:
+        'entityName': 'category'
+
+-
+  name: 'Single product route'
+  uriPattern: 'products/{product}'
+  defaults:
+    '@package':     'My.Demo'
+    '@controller':  'Product'
+    '@action':      'show'
+  routeParts:
+    product:
+      objectType: 'My\Demo\Domain\Model\Product'
+      uriPattern: '{category.title}/{name}'
+
+-
+  name: 'Single product route'
+  uriPattern: 'products/{product}'
+  defaults:
+    '@package':     'My.Demo'
+    '@controller':  'Product'
+    '@action':      'show'
+  routeParts:
+    product:
+      objectType: 'My\Demo\Domain\Model\Product'
+  httpMethods:
+    - DELETE
+    - EXAMPLE

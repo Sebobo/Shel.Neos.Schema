@@ -1,0 +1,17 @@
+-
+  name: '<entityName> list view'
+  uriPattern: ''
+  defaults:
+    '@action': 'index'
+
+-
+  name: '<entityName> detail view'
+  uriPattern: '{<entityName>}'
+  defaults:
+    '@action': 'show'
+
+-
+  name: '<entityName> edit view'
+  uriPattern: '{<entityName>}/edit'
+  defaults:
+    '@action': 'edit'
