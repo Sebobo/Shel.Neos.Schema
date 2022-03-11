@@ -234,11 +234,25 @@
                                     "type": "boolean",
                                     "default": false
                                 },
+                                "multiple": {
+                                    "type": "boolean"
+                                },
+                                "accept": {
+                                    "type": "string",
+                                    "default": null
+                                },
                                 "constraints": {
                                     "type": "object",
                                     "additionalProperties": false,
                                     "properties": {
                                         "mediaTypes": {
+                                            "type": "array",
+                                            "uniqueItems": true,
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "assetSources": {
                                             "type": "array",
                                             "uniqueItems": true,
                                             "items": {
@@ -379,11 +393,22 @@
                                     ],
                                     "default": null
                                 },
+                                "accept": {
+                                    "type": "string",
+                                    "default": null
+                                },
                                 "constraints": {
                                     "type": "object",
                                     "additionalProperties": false,
                                     "properties": {
                                         "mediaTypes": {
+                                            "type": "array",
+                                            "uniqueItems": true,
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "assetSources": {
                                             "type": "array",
                                             "uniqueItems": true,
                                             "items": {
