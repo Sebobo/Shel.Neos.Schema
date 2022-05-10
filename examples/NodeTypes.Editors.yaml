@@ -107,6 +107,7 @@ My.Vendor:Content.Editors:
 
     assets:
       type: array<Neos\Media\Domain\Model\Asset>
+      defaultValue: []
       ui:
         inspector:
           editor: 'Neos.Neos/Inspector/Editors/AssetEditor'

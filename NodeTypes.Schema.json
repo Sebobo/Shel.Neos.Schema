@@ -1180,7 +1180,8 @@
                                 "string",
                                 "number",
                                 "boolean",
-                                "null"
+                                "null",
+                                "array"
                             ]
                         },
                         "search": {
