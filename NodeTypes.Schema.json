@@ -1121,6 +1121,9 @@
                                 }
                             ]
                         },
+                        "options": {
+                            "type": "object"
+                        },
                         "constraints": {
                             "type": "object",
                             "additionalProperties": false,

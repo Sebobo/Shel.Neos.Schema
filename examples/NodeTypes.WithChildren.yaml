@@ -4,6 +4,8 @@ My.Vendor:Document.Simple:
   childNodes:
     main:
       type: Neos.Neos:ContentCollection
+      options:
+        someCustomOption: true
       constraints:
         nodeTypes:
           Neos.Neos:Content: true
