@@ -4,6 +4,7 @@ My.Vendor:Content.Text:
     Neos.Neos:Content: true
   ui:
     label: i18n
+  class: 'My\Site\CustomNodeClass'
   properties:
     text:
       type: string

@@ -1076,6 +1076,9 @@
                     }
                 }
             },
+            "class": {
+                "type": "string"
+            },
             "search": {
                 "type": "object",
                 "properties": {
