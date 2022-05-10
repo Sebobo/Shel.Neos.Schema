@@ -61,6 +61,7 @@ My.Vendor:Content.Editors:
           editorOptions:
             allowEmpty: true
             placeholder: i18n
+            minimumResultsForSearch: -1
             values:
               foo:
                 label: i18n

@@ -189,8 +189,9 @@
                                 },
                                 "minimumResultsForSearch": {
                                     "type": "integer",
-                                    "minimum": 1,
-                                    "default": 5
+                                    "minimum": -1,
+                                    "default": 5,
+                                    "description": "The minimum number of items before the search box is shown. If set to -1 it will always be hidden."
                                 },
                                 "threshold": {
                                     "type": "integer",
