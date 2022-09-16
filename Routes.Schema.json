@@ -30,8 +30,7 @@
                         "my/demo(/{@action}.html)",
                         "products/list/{sortOrder}.{@format}",
                         "demo/<DemoSubroutes>"
-                    ],
-                    "pattern": "^(?!/).*"
+                    ]
                 },
                 "defaults": {
                     "type": "object",
