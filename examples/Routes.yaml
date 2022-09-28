@@ -49,3 +49,12 @@
   httpMethods:
     - DELETE
     - EXAMPLE
+
+-
+  name: 'Prefixed subroutes'
+  uriPattern: 'prefixed<Subroutes>'
+  subRoutes:
+    SubRoutes:
+      package: My.Package
+      suffix: Prefixed
+
