@@ -76,7 +76,8 @@
                                     "Neos.Neos/Inspector/Editors/ReferencesEditor",
                                     "Neos.Neos/Inspector/Editors/LinkEditor",
                                     "Neos.Neos/Inspector/Editors/ImageEditor",
-                                    "Neos.Neos/Inspector/Editors/DateTimeEditor"
+                                    "Neos.Neos/Inspector/Editors/DateTimeEditor",
+                                    "Neos.Neos/Inspector/Editors/RangeEditor",
                                 ]
                             }
                         },
@@ -615,6 +616,71 @@
                                         "null"
                                     ],
                                     "default": false
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "editor": {
+                            "const": "Neos.Neos/Inspector/Editors/RangeEditor",
+                            "title": "Range editor (since Neos 7.3)",
+                            "description": "For selecting numeric values"
+                        },
+                        "editorOptions": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "minLabel": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ],
+                                    "description": "If set, this value is displayed instead of the minimum value."
+                                },
+                                "maxLabel": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ],
+                                    "description": "If set, this value is displayed instead of the maximum value."
+                                },
+                                "step": {
+                                    "type": [
+                                        "number",
+                                        "null"
+                                    ],
+                                    "description": "The step attribute is a number that specifies the granularity that the value must adhere to."
+                                },
+                                "unit": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ],
+                                    "description": "The value gets displayed beside the current value, as well after the minimal value (only if `minLabel` is not set) and after the maximal value (only if ``maxLabel`` is not set). (The unit is just a visual indicator and will not be added to the resulting property value.)"
+                                },
+                                "disabled": {
+                                    "type": [
+                                        "boolean",
+                                        "null"
+                                    ],
+                                    "default": false,
+                                    "description": "If set to `true`, the range editor gets disabled."
+                                },
+                                "min": {
+                                    "type": [
+                                        "number",
+                                        "null"
+                                    ],
+                                    "description": "The lowest value in the range of permitted values. This value must be less than or equal to the value of the max attribute."
+                                },
+                                "max": {
+                                    "type": [
+                                        "number",
+                                        "null"
+                                    ],
+                                    "description": "The greatest value in the range of permitted values. This value must be greater than or equal to the value of the min attribute."
                                 }
                             }
                         }

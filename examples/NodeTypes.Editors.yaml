@@ -186,3 +186,17 @@ My.Vendor:Content.Editors:
                     width: 4
                     height: 3
                     label: Normal screens
+
+    numberInRange:
+      type: int
+      ui:
+        inspector:
+          editor: Neos.Neos/Inspector/Editors/RangeEditor
+          editorOptions:
+            disabled: true
+            minLabel: 'Minimum'
+            maxLabel: 'Maximum'
+            min: 0
+            max: 100
+            step: 5
+            unit: px
