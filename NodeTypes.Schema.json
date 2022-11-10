@@ -77,7 +77,7 @@
                                     "Neos.Neos/Inspector/Editors/LinkEditor",
                                     "Neos.Neos/Inspector/Editors/ImageEditor",
                                     "Neos.Neos/Inspector/Editors/DateTimeEditor",
-                                    "Neos.Neos/Inspector/Editors/RangeEditor",
+                                    "Neos.Neos/Inspector/Editors/RangeEditor"
                                 ]
                             }
                         },
