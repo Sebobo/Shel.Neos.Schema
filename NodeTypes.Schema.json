@@ -1164,7 +1164,7 @@
                     "null"
                 ],
                 "propertyNames": {
-                    "pattern": "^[a-z0-9\\-]+$"
+                    "pattern": "^[a-zA-Z0-9\\-]+$"
                 },
                 "additionalProperties": {
                     "type": [
