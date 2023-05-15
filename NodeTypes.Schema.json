@@ -1411,6 +1411,15 @@
                                         "type": {
                                             "type": "string"
                                         },
+                                        "defaultValue": {
+                                            "type": [
+                                                "string",
+                                                "number",
+                                                "boolean",
+                                                "null",
+                                                "array"
+                                            ]
+                                        },
                                         "ui": {
                                             "anyOf": [
                                                 {
