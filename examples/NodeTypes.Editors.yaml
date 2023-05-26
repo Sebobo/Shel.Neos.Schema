@@ -108,7 +108,7 @@ My.Vendor:Content.Editors:
 
     assets:
       type: array<Neos\Media\Domain\Model\Asset>
-      defaultValue: []
+      defaultValue: [ ]
       ui:
         inspector:
           editor: 'Neos.Neos/Inspector/Editors/AssetEditor'
@@ -139,7 +139,7 @@ My.Vendor:Content.Editors:
           editorOptions:
             placeholder: i18n
             threshold: 2
-            nodeTypes: [Neos.Neos:Document]
+            nodeTypes: [ Neos.Neos:Document ]
             startingPoint: '/sites'
             disabled: false
 
@@ -149,7 +149,7 @@ My.Vendor:Content.Editors:
         inspector:
           editor: 'Neos.Neos/Inspector/Editors/LinkEditor'
           editorOptions:
-            nodeTypes: ['Neos.Neos:Document']
+            nodeTypes: [ 'Neos.Neos:Document' ]
             startingPoint: '/sites'
             placeholder: i18n
             disabled: false
@@ -165,7 +165,7 @@ My.Vendor:Content.Editors:
             disabled: false
             maximumFileSize: null
             constraints:
-              mediaTypes: ['image/jpeg']
+              mediaTypes: [ 'image/jpeg' ]
             features:
               crop: true
               resize: false
