@@ -8,6 +8,7 @@ My.Vendor:Content.Text:
   properties:
     text:
       type: string
+      defaultValue: 'Some text'
       options:
         someCustomOption: true
       ui:

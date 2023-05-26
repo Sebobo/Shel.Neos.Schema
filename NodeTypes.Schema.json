@@ -1078,9 +1078,11 @@
         },
         "nodeTemplateChildNode": {
             "type": "object",
-            "allOf": [{
-                "$ref": "#/definitions/nodeTemplate"
-            }],
+            "allOf": [
+                {
+                    "$ref": "#/definitions/nodeTemplate"
+                }
+            ],
             "properties": {
                 "type": {
                     "type": "string"
@@ -1090,6 +1092,122 @@
                     "type": "string"
                 }
             }
+        },
+        "defaultValueType": {
+            "if": {
+                "required": ["type"],
+                "properties": {
+                    "type": {
+                        "minLength": 1
+                    }
+                }
+            },
+            "then": {
+                "allOf": [
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "string"
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "defaultValue": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "integer"
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "defaultValue": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "boolean"
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "defaultValue": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "array"
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "defaultValue": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "number"
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "defaultValue": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "propertyTypes": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "enum": [
+                        "string",
+                        "DateTime",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "reference",
+                        "references",
+                        "array",
+                        "Neos\\Media\\Domain\\Model\\Asset",
+                        "array<Neos\\Media\\Domain\\Model\\Asset>",
+                        "Neos\\Media\\Domain\\Model\\ImageInterface"
+                    ]
+                }
+            ]
         }
     },
     "additionalProperties": {
@@ -1221,25 +1339,7 @@
                     "additionalProperties": false,
                     "properties": {
                         "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "enum": [
-                                        "string",
-                                        "DateTime",
-                                        "boolean",
-                                        "integer",
-                                        "reference",
-                                        "references",
-                                        "array",
-                                        "Neos\\Media\\Domain\\Model\\Asset",
-                                        "array<Neos\\Media\\Domain\\Model\\Asset>",
-                                        "Neos\\Media\\Domain\\Model\\ImageInterface"
-                                    ]
-                                }
-                            ]
+                            "$ref": "#/definitions/propertyTypes"
                         },
                         "defaultValue": {
                             "type": [
@@ -1290,7 +1390,10 @@
                                     "type": "boolean"
                                 },
                                 "inline": {
-                                    "type": ["object", "null"],
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
                                     "properties": {
                                         "editorOptions": {
                                             "$ref": "#/definitions/inlineEditorOptions"
@@ -1361,7 +1464,8 @@
                         "validation": {
                             "$ref": "#/definitions/validation"
                         }
-                    }
+                    },
+                    "$ref": "#/definitions/defaultValueType"
                 }
             },
             "ui": {
@@ -1409,7 +1513,7 @@
                                     "additionalProperties": false,
                                     "properties": {
                                         "type": {
-                                            "type": "string"
+                                            "$ref": "#/definitions/propertyTypes"
                                         },
                                         "defaultValue": {
                                             "type": [
@@ -1439,7 +1543,8 @@
                                         "validation": {
                                             "$ref": "#/definitions/validation"
                                         }
-                                    }
+                                    },
+                                    "$ref": "#/definitions/defaultValueType"
                                 }
                             }
                         }
