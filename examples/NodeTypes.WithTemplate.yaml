@@ -5,6 +5,7 @@ Neos.NodeTypes:Page:
       elements:
         dummyText:
           type: string
+          defaultValue: 'Hello world'
           ui:
             label: 'Dummy text'
             editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
