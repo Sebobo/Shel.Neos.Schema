@@ -1478,6 +1478,25 @@
                     "icon": {
                         "$ref": "#/definitions/icon"
                     },
+                    "previewIcon": {
+                        "type": "string",
+                        "description": "This setting defines the icon that will be used in the tile view of the NodeType selection dialog. Neos 8.0+",
+                        "examples": [
+                            "resource://Neos.Demo/Images/customIcon.svg"
+                        ]
+                    },
+                    "previewIconSize": {
+                        "type": "string",
+                        "default": "2x",
+                        "description": "The previewIconSize setting defines the size of the previewIcon. By default, the previewIcon has the size \"2x\". Neos 8.0+",
+                        "enum": [
+                            "xs",
+                            "sm",
+                            "lg",
+                            "2x",
+                            "3x"
+                        ]
+                    },
                     "group": {
                         "type": "string"
                     },

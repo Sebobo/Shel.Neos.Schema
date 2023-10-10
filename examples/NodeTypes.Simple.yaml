@@ -4,6 +4,8 @@ My.Vendor:Content.Text:
     Neos.Neos:Content: true
   ui:
     label: i18n
+    previewIcon: 'resource://Neos.Demo/Images/customIcon.svg'
+    previewIconSize: '3x'
   class: 'My\Site\CustomNodeClass'
   properties:
     text:
@@ -29,4 +31,3 @@ My.Vendor:Content.Text:
               nodes: true
             placeholder: i18n
             autoparagraph: false
-
