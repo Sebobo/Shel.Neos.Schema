@@ -391,6 +391,7 @@
                                 "maximumFileSize": {
                                     "type": [
                                         "integer",
+                                        "string",
                                         "null"
                                     ],
                                     "default": null
