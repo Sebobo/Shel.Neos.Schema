@@ -38,7 +38,8 @@ My.Vendor:Content.Validators:
           minimum: 0
           maximum: 2
         Neos.Neos/Validation/RegularExpressionValidator:
-          regularExpression: foo
+          regularExpression: '/^[a-z0-9\-]+$/i'
+          validationErrorMessage: 'Please enter only lowercase letters, numbers or minus'
         Neos.Neos/Validation/StringValidator: {}
         Neos.Neos/Validation/StringLengthValidator:
           minimum: 0
@@ -46,5 +47,3 @@ My.Vendor:Content.Validators:
           ignoreHtml: false
         Neos.Neos/Validation/TextValidator: { }
         Neos.Neos/Validation/UuidValidator: { }
-
-

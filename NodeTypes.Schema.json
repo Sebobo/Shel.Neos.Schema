@@ -1013,6 +1013,9 @@
                     "properties": {
                         "regularExpression": {
                             "type": "string"
+                        },
+                        "validationErrorMessage": {
+                            "type": "string"
                         }
                     }
                 },
