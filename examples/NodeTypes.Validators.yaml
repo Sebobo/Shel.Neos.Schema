@@ -10,40 +10,53 @@ My.Vendor:Content.Validators:
       validation:
         My.Custom/Validator:
           myCustomProperty: true
-
         Neos.Neos/Validation/BooleanValidator:
           expectedValue: false
+          validationErrorMessage: 'Please enter a boolean'
         Neos.Neos/Validation/DateTimeValidator:
           locale: en
           strictMode: false
           formatLength: default
           formatType: date
+          validationErrorMessage: 'Please enter a valid datetime'
         Neos.Neos/Validation/DateTimeRangeValidator:
           earliestDate: 1.1.2000
           latestDate: 2.1.2000
+          validationErrorMessage: 'Please enter a valid datetime in the range of x and y'
         Neos.Neos/Validation/EmailAddressValidator:
           checkDns: false
           strict: false
-        Neos.Neos/Validation/FloatValidator: { }
-        Neos.Neos/Validation/IntegerValidator: { }
-        Neos.Neos/Validation/LabelValidator: { }
-        Neos.Neos/Validation/LocaleIdentifierValidator: { }
-        Neos.Neos/Validation/NotEmptyValidator: { }
+          validationErrorMessage: 'Please enter a valid email address'
+        Neos.Neos/Validation/FloatValidator:
+          validationErrorMessage: 'Please enter a valid float'
+        Neos.Neos/Validation/IntegerValidator:
+          validationErrorMessage: 'Please enter a valid integer'
+        Neos.Neos/Validation/LabelValidator:
+          validationErrorMessage: 'Please enter a valid label'
+        Neos.Neos/Validation/LocaleIdentifierValidator:
+          validationErrorMessage: 'Please enter a valid locale'
+        Neos.Neos/Validation/NotEmptyValidator:
+            validationErrorMessage: 'Please enter a value'
         Neos.Neos/Validation/NumberValidator:
           locale: en
           strictMode: false
           formatLength: default
           formatType: decimal
+          validationErrorMessage: 'Please enter a number'
         Neos.Neos/Validation/NumberRangeValidator:
           minimum: 0
           maximum: 2
         Neos.Neos/Validation/RegularExpressionValidator:
           regularExpression: '/^[a-z0-9\-]+$/i'
           validationErrorMessage: 'Please enter only lowercase letters, numbers or minus'
-        Neos.Neos/Validation/StringValidator: {}
+        Neos.Neos/Validation/StringValidator:
+          validationErrorMessage: 'Please enter a valid string'
         Neos.Neos/Validation/StringLengthValidator:
           minimum: 0
           maximum: 1
           ignoreHtml: false
-        Neos.Neos/Validation/TextValidator: { }
-        Neos.Neos/Validation/UuidValidator: { }
+          validationErrorMessage: 'Please enter a valid string between x and y characters'
+        Neos.Neos/Validation/TextValidator:
+          validationErrorMessage: 'Please enter a valid text'
+        Neos.Neos/Validation/UuidValidator:
+          validationErrorMessage: 'Please enter a valid uuid'

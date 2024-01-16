@@ -849,11 +849,17 @@
             }
         },
         "simpleValidator": {
+            "$comment": "This is the base validator definition for all validators. It is extended by the actual validators below.",
             "type": [
                 "object",
                 "null"
             ],
-            "additionalProperties": false
+            "properties": {
+                "validationErrorMessage": {
+                    "type": "string",
+                    "description": "The custom error message to be shown if the validation fails. Neos 8.0+"
+                }
+            }
         },
         "validation": {
             "type": [
@@ -869,24 +875,20 @@
             },
             "properties": {
                 "Neos.Neos/Validation/BooleanValidator": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
+                    "$ref": "#/definitions/simpleValidator",
                     "additionalProperties": false,
                     "properties": {
+                        "validationErrorMessage": true,
                         "expectedValue": {
                             "type": "boolean"
                         }
                     }
                 },
                 "Neos.Neos/Validation/DateTimeValidator": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
+                    "$ref": "#/definitions/simpleValidator",
                     "additionalProperties": false,
                     "properties": {
+                        "validationErrorMessage": true,
                         "locale": {
                             "type": "string"
                         },
@@ -912,12 +914,10 @@
                     }
                 },
                 "Neos.Neos/Validation/DateTimeRangeValidator": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
+                    "$ref": "#/definitions/simpleValidator",
                     "additionalProperties": false,
                     "properties": {
+                        "validationErrorMessage": true,
                         "earliestDate": {
                             "type": "string"
                         },
@@ -927,12 +927,10 @@
                     }
                 },
                 "Neos.Neos/Validation/EmailAddressValidator": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
+                    "$ref": "#/definitions/simpleValidator",
                     "additionalProperties": false,
                     "properties": {
+                        "validationErrorMessage": true,
                         "strict": {
                             "type": "boolean"
                         },
@@ -942,24 +940,38 @@
                     }
                 },
                 "Neos.Neos/Validation/FloatValidator": {
-                    "$ref": "#/definitions/simpleValidator"
-                },
-                "Neos.Neos/Validation/IntegerValidator": {
-                    "$ref": "#/definitions/simpleValidator"
-                },
-                "Neos.Neos/Validation/LabelValidator": {
-                    "$ref": "#/definitions/simpleValidator"
-                },
-                "Neos.Neos/Validation/LocaleIdentifierValidator": {
-                    "$ref": "#/definitions/simpleValidator"
-                },
-                "Neos.Neos/Validation/NumberValidator": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
+                    "$ref": "#/definitions/simpleValidator",
                     "additionalProperties": false,
                     "properties": {
+                        "validationErrorMessage": true
+                    }
+                },
+                "Neos.Neos/Validation/IntegerValidator": {
+                    "$ref": "#/definitions/simpleValidator",
+                    "additionalProperties": false,
+                    "properties": {
+                        "validationErrorMessage": true
+                    }
+                },
+                "Neos.Neos/Validation/LabelValidator": {
+                    "$ref": "#/definitions/simpleValidator",
+                    "additionalProperties": false,
+                    "properties": {
+                        "validationErrorMessage": true
+                    }
+                },
+                "Neos.Neos/Validation/LocaleIdentifierValidator": {
+                    "$ref": "#/definitions/simpleValidator",
+                    "additionalProperties": false,
+                    "properties": {
+                        "validationErrorMessage": true
+                    }
+                },
+                "Neos.Neos/Validation/NumberValidator": {
+                    "$ref": "#/definitions/simpleValidator",
+                    "additionalProperties": false,
+                    "properties": {
+                        "validationErrorMessage": true,
                         "locale": {
                             "type": "string"
                         },
@@ -985,12 +997,10 @@
                     }
                 },
                 "Neos.Neos/Validation/NumberRangeValidator": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
+                    "$ref": "#/definitions/simpleValidator",
                     "additionalProperties": false,
                     "properties": {
+                        "validationErrorMessage": true,
                         "minimum": {
                             "type": "integer",
                             "minimum": 0
@@ -1002,33 +1012,34 @@
                     }
                 },
                 "Neos.Neos/Validation/NotEmptyValidator": {
-                    "$ref": "#/definitions/simpleValidator"
-                },
-                "Neos.Neos/Validation/RegularExpressionValidator": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
+                    "$ref": "#/definitions/simpleValidator",
                     "additionalProperties": false,
                     "properties": {
+                        "validationErrorMessage": true
+                    }
+                },
+                "Neos.Neos/Validation/RegularExpressionValidator": {
+                    "$ref": "#/definitions/simpleValidator",
+                    "additionalProperties": false,
+                    "properties": {
+                        "validationErrorMessage": true,
                         "regularExpression": {
-                            "type": "string"
-                        },
-                        "validationErrorMessage": {
                             "type": "string"
                         }
                     }
                 },
                 "Neos.Neos/Validation/StringValidator": {
-                    "$ref": "#/definitions/simpleValidator"
-                },
-                "Neos.Neos/Validation/StringLengthValidator": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
+                    "$ref": "#/definitions/simpleValidator",
                     "additionalProperties": false,
                     "properties": {
+                        "validationErrorMessage": true
+                    }
+                },
+                "Neos.Neos/Validation/StringLengthValidator": {
+                    "$ref": "#/definitions/simpleValidator",
+                    "additionalProperties": false,
+                    "properties": {
+                        "validationErrorMessage": true,
                         "minimum": {
                             "type": "integer",
                             "minimum": 0
@@ -1043,10 +1054,18 @@
                     }
                 },
                 "Neos.Neos/Validation/TextValidator": {
-                    "$ref": "#/definitions/simpleValidator"
+                    "$ref": "#/definitions/simpleValidator",
+                    "additionalProperties": false,
+                    "properties": {
+                        "validationErrorMessage": true
+                    }
                 },
                 "Neos.Neos/Validation/UuidValidator": {
-                    "$ref": "#/definitions/simpleValidator"
+                    "$ref": "#/definitions/simpleValidator",
+                    "additionalProperties": false,
+                    "properties": {
+                        "validationErrorMessage": true
+                    }
                 }
             }
         },
