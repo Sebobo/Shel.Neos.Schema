@@ -18,6 +18,11 @@ up:
         -
           type: 'MyCustom'
           settings: []
+        -
+          type: 'ChangePropertyValue'
+          settings:
+            property: 'myBooleanProperty'
+            newValue: false
     -
       filters:
         -

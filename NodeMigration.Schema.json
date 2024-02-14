@@ -327,7 +327,11 @@
                                 "newValue": {
                                     "description": "New property value to be set.\n\nThe value of the option currentValuePlaceholder (defaults to “{current}”) will be used to include the current property value into the new value.",
                                     "x-intellij-html-description": "<p>New property value to be set.\n\nThe value of the option <code>currentValuePlaceholder</code> (defaults to “{current}”) will be used to include the current property value into the new value.</p>",
-                                    "type": "string"
+                                    "type": [
+                                        "string",
+                                        "number",
+                                        "boolean"
+                                    ]
                                 },
                                 "search": {
                                     "description": "Search string to replace in current property value.",
