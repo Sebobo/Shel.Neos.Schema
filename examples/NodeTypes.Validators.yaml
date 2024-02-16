@@ -44,7 +44,7 @@ My.Vendor:Content.Validators:
           formatType: decimal
           validationErrorMessage: 'Please enter a number'
         Neos.Neos/Validation/NumberRangeValidator:
-          minimum: 0
+          minimum: -2
           maximum: 2
         Neos.Neos/Validation/RegularExpressionValidator:
           regularExpression: '/^[a-z0-9\-]+$/i'
