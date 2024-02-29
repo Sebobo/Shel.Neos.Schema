@@ -806,6 +806,10 @@
                         },
                         "a": {
                             "type": "boolean"
+                        },
+                        "blockquote": {
+                            "type": "boolean",
+                            "description": "Allows wrapping text in a blockquote tag (Neos 8.3+)"
                         }
                     }
                 }

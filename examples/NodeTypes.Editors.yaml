@@ -43,6 +43,7 @@ My.Vendor:Content.Editors:
               anchor: true
             formatting:
               strong: true
+              blockquote: true
 
     textField:
       type: string
