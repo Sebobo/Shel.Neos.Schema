@@ -63,6 +63,7 @@ My.Vendor:Content.Editors:
           editorOptions:
             allowEmpty: true
             placeholder: i18n
+            placeholderIcon: 'list'
             minimumResultsForSearch: -1
             values:
               foo:

@@ -181,6 +181,9 @@
                                 "placeholder": {
                                     "$ref": "#/definitions/label"
                                 },
+                                "placeholderIcon": {
+                                    "$ref": "#/definitions/icon"
+                                },
                                 "disabled": {
                                     "type": "boolean",
                                     "default": false
