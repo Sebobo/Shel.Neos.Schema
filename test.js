@@ -26,6 +26,10 @@ const schemas = [
         pattern: /Routes.*\.yaml$/,
         schemaFile: './Routes.Schema.json',
     },
+    {
+        pattern: /Settings.*\.yaml$/,
+        schemaFile: './NodeTypes.Presets.Schema.json',
+    },
 ].map(sd => {
     const schema = JSON.parse(fs.readFileSync(sd.schemaFile, { encoding: 'utf8', flag: 'r' }));
     const validate = ajv.compile(schema);

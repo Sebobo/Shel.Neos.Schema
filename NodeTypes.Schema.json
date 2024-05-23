@@ -1121,7 +1121,7 @@
                 }
             }
         },
-        "defaultValueType": {
+        "defaultValueValidation": {
             "if": {
                 "required": ["type"],
                 "properties": {
@@ -1215,6 +1215,15 @@
                 ]
             }
         },
+        "defaultValueType": {
+            "type": [
+                "string",
+                "number",
+                "boolean",
+                "null",
+                "array"
+            ]
+        },
         "propertyTypes": {
             "anyOf": [
                 {
@@ -1236,6 +1245,100 @@
                     ]
                 }
             ]
+        },
+        "propertyUIOptions": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "label": {
+                    "$ref": "#/definitions/label"
+                },
+                "help": {
+                    "$ref": "#/definitions/help"
+                },
+                "reloadIfChanged": {
+                    "type": "boolean"
+                },
+                "reloadPageIfChanged": {
+                    "type": "boolean"
+                },
+                "inlineEditable": {
+                    "type": "boolean"
+                },
+                "inline": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "editorOptions": {
+                            "$ref": "#/definitions/inlineEditorOptions"
+                        }
+                    }
+                },
+                "showInCreationDialog": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "inspector": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/editor"
+                        },
+                        {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "additionalProperties": false,
+                            "properties": {
+                                "hidden": {
+                                    "type": [
+                                        "boolean",
+                                        "null",
+                                        "string"
+                                    ]
+                                },
+                                "group": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "position": {
+                                    "$ref": "#/definitions/position"
+                                },
+                                "editorListeners": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "additionalProperties": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "property": {
+                                                "type": "string"
+                                            },
+                                            "handler": {
+                                                "type": "string"
+                                            },
+                                            "handlerOptions": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
         }
     },
     "additionalProperties": {
@@ -1370,13 +1473,7 @@
                             "$ref": "#/definitions/propertyTypes"
                         },
                         "defaultValue": {
-                            "type": [
-                                "string",
-                                "number",
-                                "boolean",
-                                "null",
-                                "array"
-                            ]
+                            "$ref": "#/definitions/defaultValueType"
                         },
                         "search": {
                             "type": "object",
@@ -1396,104 +1493,13 @@
                             }
                         },
                         "ui": {
-                            "type": [
-                                "object",
-                                "null"
-                            ],
-                            "additionalProperties": false,
-                            "properties": {
-                                "label": {
-                                    "$ref": "#/definitions/label"
-                                },
-                                "help": {
-                                    "$ref": "#/definitions/help"
-                                },
-                                "reloadIfChanged": {
-                                    "type": "boolean"
-                                },
-                                "reloadPageIfChanged": {
-                                    "type": "boolean"
-                                },
-                                "inlineEditable": {
-                                    "type": "boolean"
-                                },
-                                "inline": {
-                                    "type": [
-                                        "object",
-                                        "null"
-                                    ],
-                                    "properties": {
-                                        "editorOptions": {
-                                            "$ref": "#/definitions/inlineEditorOptions"
-                                        }
-                                    }
-                                },
-                                "showInCreationDialog": {
-                                    "type": [
-                                        "boolean",
-                                        "null"
-                                    ]
-                                },
-                                "inspector": {
-                                    "anyOf": [
-                                        {
-                                            "$ref": "#/definitions/editor"
-                                        },
-                                        {
-                                            "type": [
-                                                "object",
-                                                "null"
-                                            ],
-                                            "additionalProperties": false,
-                                            "properties": {
-                                                "hidden": {
-                                                    "type": [
-                                                        "boolean",
-                                                        "null",
-                                                        "string"
-                                                    ]
-                                                },
-                                                "group": {
-                                                    "type": [
-                                                        "string",
-                                                        "null"
-                                                    ]
-                                                },
-                                                "position": {
-                                                    "$ref": "#/definitions/position"
-                                                },
-                                                "editorListeners": {
-                                                    "type": [
-                                                        "object",
-                                                        "null"
-                                                    ],
-                                                    "additionalProperties": {
-                                                        "type": "object",
-                                                        "additionalProperties": false,
-                                                        "properties": {
-                                                            "property": {
-                                                                "type": "string"
-                                                            },
-                                                            "handler": {
-                                                                "type": "string"
-                                                            },
-                                                            "handlerOptions": {
-                                                                "type": "object"
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
+                            "$ref": "#/definitions/propertyUIOptions"
                         },
                         "validation": {
                             "$ref": "#/definitions/validation"
                         }
                     },
-                    "$ref": "#/definitions/defaultValueType"
+                    "$ref": "#/definitions/defaultValueValidation"
                 }
             },
             "ui": {
@@ -1563,13 +1569,7 @@
                                             "$ref": "#/definitions/propertyTypes"
                                         },
                                         "defaultValue": {
-                                            "type": [
-                                                "string",
-                                                "number",
-                                                "boolean",
-                                                "null",
-                                                "array"
-                                            ]
+                                            "$ref": "#/definitions/defaultValueType"
                                         },
                                         "ui": {
                                             "anyOf": [
@@ -1591,7 +1591,7 @@
                                             "$ref": "#/definitions/validation"
                                         }
                                     },
-                                    "$ref": "#/definitions/defaultValueType"
+                                    "$ref": "#/definitions/defaultValueValidation"
                                 }
                             }
                         }

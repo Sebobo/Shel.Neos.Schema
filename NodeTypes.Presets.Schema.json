@@ -1,0 +1,66 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Presets.Schema.json",
+    "title": "Neos NodeTypes Presets Schema",
+    "type": "object",
+    "minProperties": 1,
+    "additionalProperties": false,
+    "properties": {
+        "Neos": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Neos": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "nodeTypes": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "presets": {
+                                    "$comment": "Object with presets for node types",
+                                    "type": "object",
+                                    "properties": {
+                                        "properties": {
+                                            "$comment": "Object with preset namespaces",
+                                            "type": "object",
+                                            "minProperties": 1,
+                                            "additionalProperties": {
+                                                "$comment": "Namespace objects with named property presets",
+                                                "type": "object",
+                                                "additionalProperties": {
+                                                    "$comment": "A property preset",
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "type": {
+                                                            "$ref": "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json#/definitions/propertyTypes"
+                                                        },
+                                                        "ui": {
+                                                            "$ref": "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json#/definitions/propertyUIOptions"
+                                                        },
+                                                        "validation": {
+                                                            "$ref": "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json#/definitions/validation"
+                                                        },
+                                                        "defaultValue": {
+                                                            "$ref": "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json#/definitions/defaultValueType"
+                                                        },
+                                                        "search": {
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "$ref": "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json#/definitions/defaultValueValidation"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
