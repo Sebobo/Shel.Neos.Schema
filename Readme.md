@@ -3,10 +3,10 @@
 [![Tests](https://github.com/Sebobo/Shel.Neos.Schema/actions/workflows/tests.yml/badge.svg)](https://github.com/Sebobo/Shel.Neos.Schema/actions/workflows/tests.yml)
 
 This repository contains [JSON schema](https://json-schema.org) definitions, that can be used in PHPStorm or VSCode
-to get the following features for `NodeTypes.*.yaml`, `Caches.yaml` and node migration `Version*.yaml` files: 
+to get the following features for `NodeTypes.*.yaml`, `Caches.yaml` and node migration `Version*.yaml` files:
 
-* autocompletion 
-* typehints 
+* autocompletion
+* typehints
 * validation
 * inline documentation
 
@@ -14,9 +14,9 @@ to get the following features for `NodeTypes.*.yaml`, `Caches.yaml` and node mig
 
 When the schema is stable enough it will hopefully be made available in the [schema store](https://www.schemastore.org/json/).
 
-The schema is based on the old YAML schemas we already have in Neos & Flow. 
+The schema is based on the old YAML schemas we already have in Neos & Flow.
 But they all need some converting and can be updated with the latest functionality of what JSON schema can do.
-With a bit of community effort we can upgrade them, put them in the core, replace our own schema validator 
+With a bit of community effort we can upgrade them, put them in the core, replace our own schema validator
 and make the schemas officially available on https://www.schemastore.org/json/.
 The schemastore allows your IDE to automatically download the one your need.
 
@@ -60,7 +60,7 @@ Autocompletion and descriptions for routing configuration based on [the document
 
 ## How to use
 
-### PHPStorm / IntelliJ IDEA 
+### PHPStorm / IntelliJ IDEA
 
 #### Simple option
 
@@ -69,7 +69,7 @@ latest nodetypes schema from this repository.
 
 #### Manual configuration (nodetypes)
 
-Follow the [official instruction](https://www.jetbrains.com/help/phpstorm/json.html#ws_json_schema_add_custom) and add the url: 
+Follow the [official instruction](https://www.jetbrains.com/help/phpstorm/json.html#ws_json_schema_add_custom) and add the url:
 
     https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json
 
@@ -83,7 +83,7 @@ Add path mappings to the packages you work on. For example:
 
 #### Manual configuration (migrations)
 
-See above and add the url: 
+See above and add the url:
 
     https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeMigration.Schema.json
 
@@ -97,7 +97,7 @@ Add path mappings to the packages you work on. For example:
 
 #### Manual configuration (caches)
 
-See above and add the url: 
+See above and add the url:
 
     https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/Caches.Schema.json
 
@@ -111,7 +111,7 @@ Add path mappings to the packages you work on. For example:
 
 #### Manual configuration (routing)
 
-See above and add the url: 
+See above and add the url:
 
     https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/Routes.Schema.json
 
@@ -122,6 +122,20 @@ Set `Schema Version` to `JSON Schema version 7`.
 Add path mappings to the packages you work on. For example:
 
     DistributionPackages/*/Configuration/Routes*.yaml
+
+#### Manual configuration (presets)
+
+See above and add the url:
+
+    https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Presets.Schema.json
+
+Make sure there is no space at the end of the url when pasting it into your IDE or the Schema will not validate.
+
+Set `Schema Version` to `JSON Schema version 7`.
+
+Add path mappings to the packages you work on. For example:
+
+    DistributionPackages/*/Configuration/Settings.Presets.*.yaml
 
 ### Visual Studio Code
 
@@ -137,14 +151,15 @@ then search for 'settings json' and add there the following snippet:
         "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json": ["DistributionPackages/*/Configuration/NodeTypes*.yaml", "DistributionPackages/*/NodeTypes/**/*.yaml"],
         "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeMigration.Schema.json": "DistributionPackages/*/Migrations/ContentRepository/Version*.yaml",
         "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/Caches.Schema.json": "DistributionPackages/*/Configuration/Caches*.yaml",
-        "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/Routes.Schema.json": "DistributionPackages/*/Configuration/Routes*.yaml"
+        "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/Routes.Schema.json": "DistributionPackages/*/Configuration/Routes*.yaml",
+        "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Presets.Schema.json": "DistributionPackages/*/Configuration/Settings.Presets.*.yaml"
     }
 }
 ```
 
 ### Other editors
 
-[Other editors](https://www.schemastore.org/json/) also support JSON schema. 
+[Other editors](https://www.schemastore.org/json/) also support JSON schema.
 Instructions are easy to find with your favourite search engine.
 
 ### Schema variants
@@ -167,13 +182,13 @@ Implemented additional checks:
 ### I get duplicate results for autocompletion
 
 This happens when you have an older version of the Neos plugin installed in an IntelliJ IDE and you manually set up the
-schemas in your IDE. 
-The plugin also provided some basic autocompletion hints in older versions than 1.7. After that it referenced the 
+schemas in your IDE.
+The plugin also provided some basic autocompletion hints in older versions than 1.7. After that it referenced the
 schema in this repository.
 
 ## Contribution
 
-If you know how to use the schema in other editors, please provide a PR with the instructions. 
+If you know how to use the schema in other editors, please provide a PR with the instructions.
 
-If you have ideas on how to improve the schema, please provide an issue with an example, and a 
+If you have ideas on how to improve the schema, please provide an issue with an example, and a
 PR that would resolve the issue if you can.
