@@ -132,6 +132,10 @@ My.Vendor:Content.Editors:
             nodeTypes: [ Neos.Neos:Document ]
             startingPoint: '/sites'
             disabled: false
+            createNew:
+              path: '/sites/neosdemo'
+              type: 'Neos.Demo:Document.Page'
+              titleProperty: 'title'
 
     references:
       type: references
@@ -144,6 +148,10 @@ My.Vendor:Content.Editors:
             nodeTypes: [ Neos.Neos:Document ]
             startingPoint: '/sites'
             disabled: false
+            createNew:
+              path: '/sites/neosdemo'
+              type: 'Neos.Demo:Document.Page'
+              titleProperty: 'title'
 
     link:
       type: string
