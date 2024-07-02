@@ -136,7 +136,15 @@
                                     ],
                                     "minimum": 2,
                                     "default": 6
-                                }
+                                },
+                                "maxRows": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ],
+                                    "minimum": 1,
+                                    "default": 24
+                                },
                             }
                         }
                     }
