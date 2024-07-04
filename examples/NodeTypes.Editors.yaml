@@ -27,6 +27,7 @@ My.Vendor:Content.Editors:
           editorOptions:
             maxlength: 20
             minRows: 2
+            maxRows: 10
             expandedRows: 6
             disabled: false
             readonly: false

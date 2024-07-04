@@ -136,6 +136,15 @@
                                     ],
                                     "minimum": 2,
                                     "default": 6
+                                },
+                                "maxRows": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ],
+                                    "description": "Number of maximum rows (Neos 8.4+)"
+                                    "minimum": 1,
+                                    "default": 24
                                 }
                             }
                         }
