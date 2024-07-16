@@ -9,3 +9,6 @@ My.Vendor:Document.Simple:
       constraints:
         nodeTypes:
           Neos.Neos:Content: true
+    footer:
+      options:
+        preset: 'footer'
