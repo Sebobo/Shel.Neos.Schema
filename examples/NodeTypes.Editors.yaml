@@ -48,6 +48,7 @@ My.Vendor:Content.Editors:
 
     textField:
       type: string
+      defaultValue: 'foo'
       ui:
         inspector:
           editor: 'Neos.Neos/Inspector/Editors/TextFieldEditor'
@@ -75,6 +76,8 @@ My.Vendor:Content.Editors:
                 icon: 'newspaper'
 
     boolean:
+      type: boolean
+      defaultValue: true
       ui:
         inspector:
           editor: 'Neos.Neos/Inspector/Editors/BooleanEditor'
@@ -96,6 +99,27 @@ My.Vendor:Content.Editors:
           editor: 'Neos.Neos/Inspector/Editors/CodeEditor'
           editorOptions:
             highlightingMode: htmlmixed
+
+    integer:
+      type: integer
+      defaultValue: 2
+      ui:
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/RangeEditor'
+          editorOptions:
+            min: 0
+            max: 10
+
+    number:
+      type: number
+      defaultValue: 1.2
+      ui:
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/RangeEditor'
+          editorOptions:
+            min: 0
+            max: 10
+            step: 0.1
 
     asset:
       type: Neos\Media\Domain\Model\Asset

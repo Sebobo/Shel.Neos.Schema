@@ -1161,104 +1161,100 @@
             }
         },
         "defaultValueValidation": {
-            "if": {
-                "required": ["type"],
-                "properties": {
-                    "type": {
-                        "minLength": 1
+            "oneOf": [
+                {
+                    "properties": {
+                        "type": {
+                            "type": "null"
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "properties": {
+                            "type": {
+                                "enum": [
+                                    "string",
+                                    "integer",
+                                    "number",
+                                    "boolean"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "type"
+                    ],
+                    "properties": {
+                        "type": {
+                            "const": "string"
+                        },
+                        "defaultValue": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "type"
+                    ],
+                    "properties": {
+                        "type": {
+                            "const": "integer"
+                        },
+                        "defaultValue": {
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "type"
+                    ],
+                    "properties": {
+                        "type": {
+                            "const": "number"
+                        },
+                        "defaultValue": {
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "type"
+                    ],
+                    "properties": {
+                        "type": {
+                            "const": "boolean"
+                        },
+                        "defaultValue": {
+                            "type": [
+                                "boolean",
+                                "null"
+                            ]
+                        }
                     }
                 }
-            },
-            "then": {
-                "allOf": [
-                    {
-                        "if": {
-                            "properties": {
-                                "type": {
-                                    "const": "string"
-                                }
-                            }
-                        },
-                        "then": {
-                            "properties": {
-                                "defaultValue": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "if": {
-                            "properties": {
-                                "type": {
-                                    "const": "integer"
-                                }
-                            }
-                        },
-                        "then": {
-                            "properties": {
-                                "defaultValue": {
-                                    "type": "integer"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "if": {
-                            "properties": {
-                                "type": {
-                                    "const": "boolean"
-                                }
-                            }
-                        },
-                        "then": {
-                            "properties": {
-                                "defaultValue": {
-                                    "type": "boolean"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "if": {
-                            "properties": {
-                                "type": {
-                                    "const": "array"
-                                }
-                            }
-                        },
-                        "then": {
-                            "properties": {
-                                "defaultValue": {
-                                    "type": "array"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "if": {
-                            "properties": {
-                                "type": {
-                                    "const": "number"
-                                }
-                            }
-                        },
-                        "then": {
-                            "properties": {
-                                "defaultValue": {
-                                    "type": "number"
-                                }
-                            }
-                        }
-                    }
-                ]
-            }
+            ]
         },
         "defaultValueType": {
             "type": [
                 "string",
                 "number",
                 "boolean",
+                "integer",
                 "null",
                 "array"
             ]
