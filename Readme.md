@@ -10,6 +10,8 @@ to get the following features for `NodeTypes.*.yaml`, `Caches.yaml` and node mig
 * validation
 * inline documentation
 
+In addition, it includes a binary which allows validating whole Neos CMS projects against the included schemas.
+
 ![Example usage in PHPStorm](neos-schema-example.gif)
 
 When the schema is stable enough it will hopefully be made available in the [schema store](https://www.schemastore.org/json/).
@@ -20,7 +22,15 @@ With a bit of community effort we can upgrade them, put them in the core, replac
 and make the schemas officially available on https://www.schemastore.org/json/.
 The schemastore allows your IDE to automatically download the one your need.
 
-## Features for Neos nodetypes:
+## CLI usage
+
+Example to validate the site package of a Neos CMS project:
+
+```console
+bin/validate.js -v validate path-to-neos-project/DistributionPackages/My.Site
+```
+
+## Features for Neos nodetypes
 
 ### Autocompletion
 
