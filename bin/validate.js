@@ -16,26 +16,26 @@ ajv.addKeyword('x-intellij-html-description');
 const schemas = [
     {
         pattern: /NodeTypes(\/?).*\.yaml$/,
-        schemaFile: './NodeTypes.Schema.json',
+        schemaFile: '../NodeTypes.Schema.json',
     },
     {
         pattern: /Caches.*\.yaml$/,
-        schemaFile: './Caches.Schema.json',
+        schemaFile: '../Caches.Schema.json',
     },
     {
         pattern: /Version.*\.yaml$/,
-        schemaFile: './NodeMigration.Schema.json',
+        schemaFile: '../NodeMigration.Schema.json',
     },
     {
         pattern: /Routes.*\.yaml$/,
-        schemaFile: './Routes.Schema.json',
+        schemaFile: '../Routes.Schema.json',
     },
     {
         pattern: /Settings.Presets.yaml$/,
-        schemaFile: './NodeTypes.Presets.Schema.json',
+        schemaFile: '../NodeTypes.Presets.Schema.json',
     },
 ].map(sd => {
-    const schema = JSON.parse(fs.readFileSync(sd.schemaFile, {encoding: 'utf8', flag: 'r'}));
+    const schema = JSON.parse(fs.readFileSync(path.join(__dirname, sd.schemaFile), {encoding: 'utf8', flag: 'r'}));
     const validate = ajv.compile(schema);
     return {
         ...sd,
