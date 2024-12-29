@@ -1,7 +1,7 @@
 {
     "name": "shel-neos-schema",
     "description": "A tool to validate Neos YAML schema files like nodetypes and other configuration",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "bin/validate.js",
     "author": "Sebastian Helzle <sebastian@helzle.it>",
     "license": "MIT",
