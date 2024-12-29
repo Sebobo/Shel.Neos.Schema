@@ -1,14 +1,22 @@
 {
     "name": "shel-neos-schema",
     "version": "1.0.0",
-    "main": "test.js",
+    "main": "bin/validate.js",
     "author": "Sebastian Helzle <sebastian@helzle.it>",
     "license": "MIT",
-    "devDependencies": {
-        "ajv": "^8.0.5",
-        "js-yaml": "^4.0.0"
+    "engines": {
+        "node": ">=20"
     },
     "scripts": {
-        "test": "node test.js"
-    }
+        "test": "validate -v examples"
+    },
+    "bin": {
+        "validate": "bin/validate.js"
+    },
+    "dependencies": {
+        "ajv": "^8.0.5",
+        "js-yaml": "^4.0.0",
+        "yargs": "^17.7.2"
+    },
+    "packageManager": "yarn@4.6.0"
 }
