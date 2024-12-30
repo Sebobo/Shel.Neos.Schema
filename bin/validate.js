@@ -44,6 +44,12 @@ const schemas = [
     };
 });
 
+const DEFAULTS = {
+    ignoredFolders: [
+        'node_modules',
+    ]
+}
+
 /**
  * Recursively list yaml files in a directory
  *
@@ -68,7 +74,10 @@ function listYamlFiles(dir) {
 
         // If it's a directory, recurse into it
         if (stat && stat.isDirectory()) {
-            results = results.concat(listYamlFiles(filePath));
+            // If it's not an ignored folder, recurse into it
+            if (!DEFAULTS.ignoredFolders.includes(file)) {
+                results = results.concat(listYamlFiles(filePath));
+            }
         } else if (file.endsWith('.yaml') || file.endsWith('.yml')) {
             // If it's a YAML file, add to results
             results.push(filePath);
