@@ -141,7 +141,7 @@ function validateFolder(folder, verbose) {
         }
     }
 
-    if (verbose) {
+    if (verbose || hasError) {
         console.info('Valid files %d, skipped %d, invalid %d', validFiles, skippedFiles, invalidFiles);
     }
 
