@@ -17,7 +17,8 @@
         "node": ">=20"
     },
     "scripts": {
-        "test": "validate -v validate examples"
+        "test": "validate -v validate examples",
+        "validate": "validate"
     },
     "bin": {
         "validate": "bin/validate.js"
