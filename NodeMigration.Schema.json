@@ -86,8 +86,8 @@
                             "additionalProperties": false,
                             "properties": {
                                 "dimensionValues": {
-                                    "description": "The array of dimension values to filter for.",
-                                    "type": "array"
+                                    "description": "The object of dimension values to filter for.",
+                                    "type": "object"
                                 },
                                 "filterForDefaultDimensionValues": {
                                     "description": "Overrides the given dimensionValues with dimension defaults.",
