@@ -3,6 +3,7 @@ My.Vendor:Document.Simple:
     Neos.Neos:Document: true
   childNodes:
     main:
+      label: 'Main content'
       type: Neos.Neos:ContentCollection
       options:
         someCustomOption: true
