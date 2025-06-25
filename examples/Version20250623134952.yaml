@@ -1,0 +1,32 @@
+comments: 'Merge source and dist node into version node'
+migration:
+  - filters:
+      - type: 'NodeType'
+        settings:
+          nodeType: 'Neos.MarketPlace:Source'
+    transformations:
+      - type: 'SetPropertyOnParent'
+        settings:
+          properties:
+            - from: 'type'
+              to: 'sourceType'
+            - from: 'url'
+              to: 'sourceUrl'
+            - from: 'reference'
+              to: 'sourceReference'
+  - filters:
+      - type: 'NodeType'
+        settings:
+          nodeType: 'Neos.MarketPlace:Dist'
+    transformations:
+      - type: 'SetPropertyOnParent'
+        settings:
+          properties:
+            - from: 'type'
+              to: 'distType'
+            - from: 'url'
+              to: 'distUrl'
+            - from: 'reference'
+              to: 'distReference'
+            - from: 'shasum'
+              to: 'distShasum'

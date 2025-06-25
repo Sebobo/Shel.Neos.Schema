@@ -511,19 +511,43 @@
             ]
         }
     },
-    "additionalProperties": false,
-    "properties": {
-        "up": {
-            "description": "Transformations to be applied when executing the migration",
-            "$ref": "#/definitions/configuration"
+    "oneOf": [
+        {
+            "additionalProperties": false,
+            "properties": {
+                "up": {
+                    "description": "Transformations to be applied when executing the migration",
+                    "$ref": "#/definitions/configuration"
+                },
+                "down": {
+                    "description": "Transformations to be applied when rolling back the migration",
+                    "$ref": "#/definitions/configuration"
+                }
+            },
+            "required": [
+                "up",
+                "down"
+            ]
         },
-        "down": {
-            "description": "Transformations to be applied when rolling back the migration",
-            "$ref": "#/definitions/configuration"
+        {
+            "additionalProperties": false,
+            "properties": {
+                "comments": {
+                    "description": "Description what this migration will do.",
+                    "type": "string"
+                },
+                "warnings": {
+                    "description": "If warnings are present, execution of the migration has to explicitly confirmed.",
+                    "type": "string"
+                },
+                "migration": {
+                    "description": "Transformations to be applied by this migration.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/migration"
+                    }
+                }
+            }
         }
-    },
-    "required": [
-        "up",
-        "down"
     ]
 }
