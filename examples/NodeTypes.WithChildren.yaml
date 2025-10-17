@@ -11,5 +11,6 @@ My.Vendor:Document.Simple:
         nodeTypes:
           Neos.Neos:Content: true
     footer:
+      label: ~
       options:
         preset: 'footer'

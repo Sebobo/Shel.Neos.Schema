@@ -1458,7 +1458,7 @@
                     "additionalProperties": false,
                     "properties": {
                         "label": {
-                            "type": "string",
+                            "type": ["string", "null"],
                             "description": "Set a custom label for the node (Neos 8.4+)"
                         },
                         "position": {
