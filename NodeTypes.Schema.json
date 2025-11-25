@@ -22,6 +22,9 @@
             "properties": {
                 "message": {
                     "type": "string"
+                },
+                "thumbnail": {
+                    "type": "string"
                 }
             }
         },
