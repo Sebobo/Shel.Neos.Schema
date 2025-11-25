@@ -14,6 +14,9 @@ My.Vendor:Content.Text:
       options:
         someCustomOption: true
       ui:
+        help:
+          message: 'Explanation about this text property'
+          thumbnail: 'resource://My.Site/Private/Images/helpThumbnail.png'
         inlineEditable: true
         inspector:
           editor: Neos.Neos/Inspector/Editors/TextFieldEditor
