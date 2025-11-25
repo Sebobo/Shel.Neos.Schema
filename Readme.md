@@ -202,3 +202,16 @@ If you know how to use the schema in other editors, please provide a PR with the
 
 If you have ideas on how to improve the schema, please provide an issue with an example, and a
 PR that would resolve the issue if you can.
+
+## Release
+
+Run
+
+```console
+npm version <major|minor|patch>
+npm publish
+```
+
+## License
+
+See [LICENSE](LICENSE.txt) file.
