@@ -1,4 +1,4 @@
-My.Vendor:Document.Simple:
+My.Vendor:Document.WithChildren:
   superTypes:
     Neos.Neos:Document: true
   childNodes:

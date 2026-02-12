@@ -1551,6 +1551,35 @@
                     "$ref": "#/definitions/defaultValueValidation"
                 }
             },
+            "references": {
+                "description": "References to other nodes. Since Neos 9.0, this is the recommended way to define reference properties. The old way using `properties` with type `reference` or `references` is still supported for backwards compatibility, but it is recommended to switch to this new syntax.",
+                "type": [
+                    "object",
+                    "null"
+                ],
+                "additionalProperties": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "options": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "properties": {
+                                "preset": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "ui": {
+                            "$ref": "#/definitions/propertyUIOptions"
+                        },
+                        "validation": {
+                            "$ref": "#/definitions/validation"
+                        }
+                    },
+                    "$ref": "#/definitions/defaultValueValidation"
+                }
+            },
             "ui": {
                 "type": "object",
                 "additionalProperties": false,

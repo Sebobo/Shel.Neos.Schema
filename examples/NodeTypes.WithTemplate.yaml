@@ -1,5 +1,5 @@
 # Example taken from https://github.com/Flowpack/Flowpack.NodeTemplates
-Neos.NodeTypes:Page:
+Neos.NodeTypes:Document.WithTemplate:
   ui:
     creationDialog:
       elements:

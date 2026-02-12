@@ -1,0 +1,12 @@
+My.Vendor:Document.WithReferences:
+  superTypes:
+    Neos.Neos:Document: true
+  references:
+    myReference:
+      ui:
+        label: 'My reference'
+        inspector:
+          group: default
+          editorOptions:
+            nodeTypes:
+              - Neos.Neos:Document
