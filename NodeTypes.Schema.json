@@ -1524,6 +1524,15 @@
                         "defaultValue": {
                             "$ref": "#/definitions/defaultValueType"
                         },
+                        "scope": {
+                            "type": "string",
+                            "enum": [
+                                "node",
+                                "specializations",
+                                "nodeAggregate"
+                            ],
+                            "description": "Property scopes. Since Neos 9.0."
+                        },
                         "search": {
                             "type": "object",
                             "properties": {

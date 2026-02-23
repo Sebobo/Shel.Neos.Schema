@@ -10,6 +10,7 @@ My.Vendor:Content.Text:
   properties:
     text:
       type: string
+      scope: node
       defaultValue: 'Some text'
       options:
         someCustomOption: true
