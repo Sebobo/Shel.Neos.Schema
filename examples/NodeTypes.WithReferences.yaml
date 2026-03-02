@@ -3,6 +3,11 @@ My.Vendor:Document.WithReferences:
     Neos.Neos:Document: true
   references:
     myReference:
+      constraints:
+        nodeTypes:
+          '*': false
+          'Neos.Neos:Document': true
+        maxItems: 1
       ui:
         label: 'My reference'
         inspector:

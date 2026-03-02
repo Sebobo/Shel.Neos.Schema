@@ -1584,6 +1584,22 @@
                         },
                         "validation": {
                             "$ref": "#/definitions/validation"
+                        },
+                        "constraints": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "nodeTypes": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "maxItems": {
+                                    "type": "integer",
+                                    "minimum": 1
+                                }
+                            }
                         }
                     },
                     "$ref": "#/definitions/defaultValueValidation"
