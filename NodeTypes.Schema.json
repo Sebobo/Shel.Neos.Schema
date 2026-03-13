@@ -855,6 +855,10 @@
                         "blockquote": {
                             "type": "boolean",
                             "description": "Allows wrapping text in a blockquote tag (Neos 8.3+)"
+                        },
+                        "styleDefinitions": {
+                            "type": "array",
+                            "description": "Allows defining custom styles for the inline editor (Neos 9.1+)"
                         }
                     }
                 }

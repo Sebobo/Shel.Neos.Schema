@@ -45,6 +45,10 @@ My.Vendor:Content.Editors:
             formatting:
               strong: true
               blockquote: true
+              styleDefinitions:
+                - name: 'Brand color'
+                  element: 'span'
+                  classes: [ 'color__neos-brand' ]
 
     textField:
       type: string
