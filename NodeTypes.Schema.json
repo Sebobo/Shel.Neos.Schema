@@ -1266,6 +1266,15 @@
                 "array"
             ]
         },
+        "scopeType": {
+            "type": "string",
+            "enum": [
+                "node",
+                "specializations",
+                "nodeAggregate"
+            ],
+            "description": "Property scopes. Since Neos 9.0."
+        },
         "propertyTypes": {
             "anyOf": [
                 {
@@ -1529,13 +1538,7 @@
                             "$ref": "#/definitions/defaultValueType"
                         },
                         "scope": {
-                            "type": "string",
-                            "enum": [
-                                "node",
-                                "specializations",
-                                "nodeAggregate"
-                            ],
-                            "description": "Property scopes. Since Neos 9.0."
+                            "$ref": "#/definitions/scopeType"
                         },
                         "search": {
                             "type": "object",

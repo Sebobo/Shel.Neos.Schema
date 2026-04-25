@@ -46,6 +46,9 @@
                                                         "defaultValue": {
                                                             "$ref": "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json#/definitions/defaultValueType"
                                                         },
+                                                        "scope": {
+                                                            "$ref": "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json#/definitions/scopeType"
+                                                        },
                                                         "search": {
                                                             "type": "object"
                                                         }
