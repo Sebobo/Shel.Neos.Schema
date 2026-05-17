@@ -1586,6 +1586,9 @@
                                 }
                             }
                         },
+                        "scope": {
+                            "$ref": "#/definitions/scopeType"
+                        },
                         "ui": {
                             "$ref": "#/definitions/propertyUIOptions"
                         },

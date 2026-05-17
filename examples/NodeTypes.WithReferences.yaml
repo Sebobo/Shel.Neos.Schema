@@ -8,6 +8,7 @@ My.Vendor:Document.WithReferences:
           '*': false
           'Neos.Neos:Document': true
         maxItems: 1
+      scope: node
       ui:
         label: 'My reference'
         inspector:
