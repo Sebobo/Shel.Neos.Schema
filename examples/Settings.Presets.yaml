@@ -8,6 +8,8 @@ Neos:
               type: integer
               defaultValue: 12
               scope: nodeAggregate
+              options:
+                myFeature: true
               ui:
                 inspector:
                   editor: Neos.Neos/Inspector/Editors/RangeEditor

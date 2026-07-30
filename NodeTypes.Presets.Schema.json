@@ -51,6 +51,9 @@
                                                         },
                                                         "search": {
                                                             "type": "object"
+                                                        },
+                                                        "options": {
+                                                            "type": "object"
                                                         }
                                                     },
                                                     "$ref": "https://raw.githubusercontent.com/Sebobo/Shel.Neos.Schema/main/NodeTypes.Schema.json#/definitions/defaultValueValidation"
