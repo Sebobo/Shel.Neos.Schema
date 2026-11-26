@@ -215,7 +215,11 @@
                                     "minimum": 1
                                 },
                                 "values": {
-                                    "type": "object",
+                                    "type": [
+                                        "object",
+                                        "array"
+                                    ],
+                                    "maxItems": 0,
                                     "additionalProperties": {
                                         "type": "object",
                                         "properties": {
@@ -902,11 +906,13 @@
             }
         },
         "simpleValidator": {
-            "$comment": "This is the base validator definition for all validators. It is extended by the actual validators below.",
+            "$comment": "This is the base validator definition for all validators. It is extended by the actual validators below. An empty array is allowed for validators without options, as used by the Neos core.",
             "type": [
                 "object",
+                "array",
                 "null"
             ],
+            "maxItems": 0,
             "properties": {
                 "validationErrorMessage": {
                     "type": "string",
@@ -1131,7 +1137,10 @@
                     }
                 },
                 "properties": {
-                    "type": "object"
+                    "type": [
+                        "object",
+                        "null"
+                    ]
                 },
                 "when": {
                     "$comment": "EEL-expression to determine whether the template should be applied",
@@ -1168,93 +1177,99 @@
             }
         },
         "defaultValueValidation": {
-            "oneOf": [
-                {
-                    "properties": {
-                        "type": {
-                            "type": "null"
-                        }
-                    }
-                },
-                {
-                    "not": {
+            "$comment": "Skipped for `~` and `[]`, which reset an inherited definition.",
+            "if": {
+                "type": "object"
+            },
+            "then": {
+                "oneOf": [
+                    {
                         "properties": {
                             "type": {
-                                "enum": [
+                                "type": "null"
+                            }
+                        }
+                    },
+                    {
+                        "not": {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "string",
+                                        "integer",
+                                        "number",
+                                        "boolean"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "required": [
+                            "type"
+                        ],
+                        "properties": {
+                            "type": {
+                                "const": "string"
+                            },
+                            "defaultValue": {
+                                "type": [
                                     "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "required": [
+                            "type"
+                        ],
+                        "properties": {
+                            "type": {
+                                "const": "integer"
+                            },
+                            "defaultValue": {
+                                "type": [
                                     "integer",
+                                    "null"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "required": [
+                            "type"
+                        ],
+                        "properties": {
+                            "type": {
+                                "const": "number"
+                            },
+                            "defaultValue": {
+                                "type": [
                                     "number",
-                                    "boolean"
+                                    "null"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "required": [
+                            "type"
+                        ],
+                        "properties": {
+                            "type": {
+                                "const": "boolean"
+                            },
+                            "defaultValue": {
+                                "type": [
+                                    "boolean",
+                                    "null"
                                 ]
                             }
                         }
                     }
-                },
-                {
-                    "required": [
-                        "type"
-                    ],
-                    "properties": {
-                        "type": {
-                            "const": "string"
-                        },
-                        "defaultValue": {
-                            "type": [
-                                "string",
-                                "null"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "required": [
-                        "type"
-                    ],
-                    "properties": {
-                        "type": {
-                            "const": "integer"
-                        },
-                        "defaultValue": {
-                            "type": [
-                                "integer",
-                                "null"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "required": [
-                        "type"
-                    ],
-                    "properties": {
-                        "type": {
-                            "const": "number"
-                        },
-                        "defaultValue": {
-                            "type": [
-                                "number",
-                                "null"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "required": [
-                        "type"
-                    ],
-                    "properties": {
-                        "type": {
-                            "const": "boolean"
-                        },
-                        "defaultValue": {
-                            "type": [
-                                "boolean",
-                                "null"
-                            ]
-                        }
-                    }
-                }
-            ]
+                ]
+            }
         },
         "defaultValueType": {
             "type": [
@@ -1481,7 +1496,10 @@
                             "$ref": "#/definitions/position"
                         },
                         "type": {
-                            "type": "string",
+                            "type": [
+                                "string",
+                                "null"
+                            ],
                             "anyOf": [
                                 {
                                     "const": "Neos.Neos:ContentCollection"
@@ -1528,7 +1546,12 @@
                     "null"
                 ],
                 "additionalProperties": {
-                    "type": "object",
+                    "$comment": "An empty array resets an inherited property definition. `~` has no effect, Neos drops it before merging the supertypes.",
+                    "type": [
+                        "object",
+                        "array"
+                    ],
+                    "maxItems": 0,
                     "additionalProperties": false,
                     "properties": {
                         "type": {
@@ -1666,7 +1689,10 @@
                         }
                     },
                     "creationDialog": {
-                        "type": "object",
+                        "type": [
+                            "object",
+                            "null"
+                        ],
                         "additionalProperties": false,
                         "properties": {
                             "elements": {
@@ -1675,7 +1701,10 @@
                                     "null"
                                 ],
                                 "additionalProperties": {
-                                    "type": "object",
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
                                     "additionalProperties": false,
                                     "properties": {
                                         "type": {
@@ -1744,7 +1773,10 @@
                                             "$ref": "#/definitions/position"
                                         },
                                         "tab": {
-                                            "type": "string"
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
                                         },
                                         "icon": {
                                             "$ref": "#/definitions/icon"

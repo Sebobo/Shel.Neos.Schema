@@ -1,0 +1,66 @@
+My.Vendor:Content.Base:
+  abstract: true
+  superTypes:
+    Neos.Neos:Content: true
+  ui:
+    inspector:
+      groups:
+        settings:
+          label: Settings
+          tab: meta
+    creationDialog:
+      elements:
+        title:
+          type: string
+          ui:
+            label: Title
+  childNodes:
+    main:
+      type: Neos.Neos:ContentCollection
+  options:
+    template:
+      properties:
+        title: 'Default title'
+  properties:
+    title:
+      type: string
+      validation:
+        Neos.Neos/Validation/NotEmptyValidator: []
+    subtitle:
+      type: string
+    layout:
+      type: string
+      ui:
+        inspector:
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            dataSourceIdentifier: my-vendor-layouts
+            values: []
+
+# `~` and `[]` reset values inherited from a supertype
+My.Vendor:Content.Unset:
+  superTypes:
+    My.Vendor:Content.Base: true
+    Neos.Neos:Content: false
+  ui:
+    inspector:
+      groups:
+        settings:
+          tab: ~
+    creationDialog: ~
+  childNodes:
+    main:
+      type: ~
+  options:
+    template:
+      properties: ~
+  properties:
+    subtitle: []
+
+My.Vendor:Content.UnsetCreationDialogElement:
+  superTypes:
+    My.Vendor:Content.Base: true
+  ui:
+    creationDialog:
+      elements:
+        title: ~
